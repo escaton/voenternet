@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Песочница</title>
+    <script src="http://yandex.st/jquery/1.7.2/jquery.min.js">
+    </script>
+    <script>
+        var builder = {
+            count: 10,
+
+            elements: new Array(),
+
+            _map: new Array(),
+
+            width: 0,
+
+            types: [
+                {size: 's', r: 2},
+                {size: 'm', r: 3},
+                {size: 'l', r: 5}
+            ],
+
+            squares: new Array(),
+
+            init: function (wrapper) {
+                this.count = $('.count').val();
+                this.elements = (function(count) {
+                    var buf = [];
+                    for (var i=0;i<count;i++) {
+                        buf.push({elem: $('<div>'+i+'</div>'), params: {x:null, y:null, r:null}})
+                    }
+                    return buf;
+                })(this.count);
+
+                wrapper.html('');
+                this.width = Math.floor(wrapper.width()/50);
+                for (var i=0;i<1000;i++) this._map[i] = new Array();
+
+                this.squares = (function(count) {
+                    var buf = [],
+                        i = 0;
+
+                    // create proportional array
+                    for (i=0;i<count;i++) {
+                        buf.push({
+                            type: (i<count/2 ? '0' : (i<count*5/6 ? '1': '2'))
+                        })
+                    }
+
+                    // Randomize array
+                    for (i = buf.length - 1; i > 0; i--) {
+                        var j = Math.floor(Math.random() * (i + 1));
+                        var temp = buf[i];
+                        buf[i] = buf[j];
+                        buf[j] = temp;
+                    }
+
+                    return buf;
+                })(this.count)
+            },
+
+            // getRand: function () {
+            //     var rand1 = Math.floor(Math.random()*3 );
+
+            //     while (rand1 == this.prev && rand1 == this.prev2) {
+            //         rand1 = Math.floor(Math.random()*3 );
+            //     }
+
+            //     this.prev2 = this.prev;
+            //     this.prev = rand1;
+
+            //     return this.types[rand1];
+            // },
+
+            check: function (x, y, r) {
+                if (x<0 || y<0) return false;
+                for (var i=x;i<x+r;i++) {
+                    for (var j=y;j<y+r;j++) {
+                        if (!this._map[j] || this._map[j][i] !== undefined || i>= this.width) return false;
+                    }
+                }
+                return true;
+            },
+
+            set: function (x, y, r, elem) {
+                for (var i=x;i<x+r;i++) {
+                    for (var j=y;j<y+r;j++) {
+                        this._map[j][i] = elem;
+                    }
+                }
+            },
+
+            clean: function (x, y, r) {
+                for (var i=x;i<x+r;i++) {
+                    for (var j=y;j<y+r;j++) {
+                        this._map[j][i] = undefined;
+                    }
+                }
+            },
+
+            findSpace: function (r) {
+                var map = this._map;
+
+                for (var j=0;j<this.height-r;j++) {
+                    for (var i=0;i<this.width;i++) {
+                        if (this.check(i,j,r)) {
+                            return {x: i, y: j}
+                        }
+                    }
+                }
+                return false;
+            },
+
+            allTop: function () {
+                var map = this._map,
+                    i=0,j=0,
+                    counter=0;
+
+                for (j=0;j<this.height;j++) {
+                    for (i=0;i<this.width;i++) {
+                        
+                        if (map[j][i] && !map[j][i].up) {
+                            var sqr = map[j][i],
+                                j1 = j,
+                                h = 0;
+
+                            this.clean(sqr.params.x, sqr.params.y, sqr.params.r);
+                            while (this.check(i,j1-1,sqr.params.r)) {
+                                h++;
+                                j1--;
+                                counter++;
+                            }
+                            this.set(sqr.params.x, sqr.params.y-h, sqr.params.r, sqr);
+                            sqr.params.y = sqr.params.y-h;
+                            sqr.elem.css({top:sqr.params.y*50,left:sqr.params.x*50});
+                            sqr.up = true;
+                            sqr.left = false;
+                        }
+                    }
+                }
+                return counter;
+            },
+
+            allLeft: function () {
+                var map = this._map,
+                    i=0,j=0,
+                    counter=0;
+
+                for (i=0;i<this.width;i++) {
+                    for (j=0;j<this.height;j++) {
+
+                        if (map[j][i] && !map[j][i].left) {
+                            var sqr = map[j][i],
+                                i1 = i,
+                                l = 0;
+
+                            this.clean(sqr.params.x, sqr.params.y, sqr.params.r);
+                            while (this.check(i1-1,j,sqr.params.r)) {
+                                l++;
+                                i1--;
+                                counter++;
+                            }
+                            this.set(sqr.params.x-l, sqr.params.y, sqr.params.r, sqr);
+                            sqr.params.x = sqr.params.x-l;
+                            sqr.elem.css({top:sqr.params.y*50,left:sqr.params.x*50});
+                            sqr.left = true;
+                            sqr.up = false;
+                        }
+                    }
+                }
+                return counter;
+            },
+
+            build: function (wrapper) {
+                this.init(wrapper);
+                var x=0,y=0,max=0,
+                    i=0,j=0,
+                    temp,
+                    map = this._map;
+
+                // Расставляем первый раз
+                temp = this.types[this.squares[i].type];
+                while (i<this.elements.length) {
+
+                    if (x !=0) temp = this.types[this.squares[i].type];
+
+                    if (this.check(x,y,temp.r)) {
+
+                        this.set(x,y,temp.r, this.elements[i]);
+                        this.elements[i].elem
+                            .addClass(temp.size)
+                            .css({top:y*50,left:x*50})
+                            .appendTo(wrapper);
+                        this.elements[i].params = {x: x, y: y, r:temp.r};
+
+                        x += temp.r;
+                        i++;
+                        if (temp.r > max) max = temp.r;
+
+                    } else {
+                        x = 0;
+                        y+=max;
+                        max = 0;
+                    }
+                }
+
+                this.height = y+max;
+
+                // теперь смещаем все вверх и вправо
+                while(this.allTop() != 0 || this.allLeft() != 0) {}
+
+                // Теперь забиваем пустоты
+                // i = this.squares.length-1;
+                // temp = this.findSpace(this.types[this.squares[i].type].r);
+                // while (temp) {
+                //     this.set(temp.x, temp.y, this.types[this.squares[i].type].r, this.elements[i]);
+                //     this.clean(this.elements[i].params.x, this.elements[i].params.y, this.types[this.squares[i].type].r)
+
+                //     this.elements[i].params = {x: temp.x, y: temp.y, r: this.types[this.squares[i].type].r};
+                //     this.elements[i].elem
+                //         .css({top:this.elements[i].params.y*50,left:this.elements[i].params.x*50})
+                //     i--;
+                //     temp = this.findSpace(this.types[this.squares[i].type].r);
+                // }
+
+                wrapper.height((y+max)*50);
+            }
+        }
+        $(function() {
+            $('.button')
+                .click(function() {
+                    builder.build($('.wrapper'))
+                })
+                .trigger('click');
+        })
+    </script>
+    <style>
+        html * {
+            font: 0.9em Arial,Helvetica,sans-serif;
+        }
+        .wrapper {
+            width: 750px;
+            height: 1000px;
+            margin: 10px auto 0;
+            border:10px solid #000;
+            overflow: hidden;
+            position: relative;
+        }
+        .s, .m, .l {
+            position: absolute;
+            transition: all 300ms ease;
+            border:1px solid #ccc;
+            -moz-box-sizing:border-box;
+            box-sizing:border-box;
+        }
+        .s {
+            height:100px;
+            width:100px;
+            background: #206422
+        }
+        .m {
+            height:150px;
+            width:150px;
+            background: #5A80A8;
+        }
+        .l {
+            height: 250px;
+            width: 250px;
+            background: #B44F4F;
+        }
+    </style>
+</head>
+<body>
+Количество: <input class="count" type="text" value="30" />
+<input class="button" type="button" value="Generate" />
+    <div class="wrapper">
+    </div>
+</body>
+</html>

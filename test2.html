@@ -28,14 +28,16 @@
                 this.elements = (function(count) {
                     var buf = [];
                     for (var i=0;i<count;i++) {
-                        buf.push({elem: $('<div>'+i+'</div>'), params: {x:null, y:null, r:null}})
+                        buf.push({elem: $('<div class="block">'+i+'</div>'), params: {x:null, y:null, r:null}})
                     }
                     return buf;
                 })(this.count);
 
+                this.wrapper = wrapper;
+
                 wrapper.html('');
                 this.width = Math.floor(wrapper.width()/50);
-                for (var i=0;i<1000;i++) this._map[i] = new Array();
+                for (var i=0;i<this.width;i++) this._map[i] = new Array();
 
                 this.squares = (function(count) {
                     var buf = [],
@@ -77,7 +79,7 @@
                 if (x<0 || y<0) return false;
                 for (var i=x;i<x+r;i++) {
                     for (var j=y;j<y+r;j++) {
-                        if (!this._map[j] || this._map[j][i] !== undefined || i>= this.width) return false;
+                        if (!this._map[i] || this._map[i][j] !== undefined) return false;
                     }
                 }
                 return true;
@@ -86,7 +88,7 @@
             set: function (x, y, r, elem) {
                 for (var i=x;i<x+r;i++) {
                     for (var j=y;j<y+r;j++) {
-                        this._map[j][i] = elem;
+                        this._map[i][j] = elem;
                     }
                 }
             },
@@ -94,7 +96,7 @@
             clean: function (x, y, r) {
                 for (var i=x;i<x+r;i++) {
                     for (var j=y;j<y+r;j++) {
-                        this._map[j][i] = undefined;
+                        this._map[i][j] = undefined;
                     }
                 }
             },
@@ -115,13 +117,14 @@
             allTop: function () {
                 var map = this._map,
                     i=0,j=0,
-                    counter=0;
+                    counter=0,
+                    elements = this.elements;
 
                 for (j=0;j<this.height;j++) {
                     for (i=0;i<this.width;i++) {
                         
-                        if (map[j][i] && !map[j][i].up) {
-                            var sqr = map[j][i],
+                        if (map[i][j] && !map[i][j].up) {
+                            var sqr = map[i][j],
                                 j1 = j,
                                 h = 0;
 
@@ -135,23 +138,24 @@
                             sqr.params.y = sqr.params.y-h;
                             sqr.elem.css({top:sqr.params.y*50,left:sqr.params.x*50});
                             sqr.up = true;
-                            sqr.left = false;
                         }
                     }
                 }
+                for (i=0;i<elements.length;i++) elements[i].up = false;
                 return counter;
             },
 
             allLeft: function () {
                 var map = this._map,
                     i=0,j=0,
-                    counter=0;
+                    counter=0,
+                    elements = this.elements;
 
                 for (i=0;i<this.width;i++) {
                     for (j=0;j<this.height;j++) {
 
-                        if (map[j][i] && !map[j][i].left) {
-                            var sqr = map[j][i],
+                        if (map[i][j] && !map[i][j].left) {
+                            var sqr = map[i][j],
                                 i1 = i,
                                 l = 0;
 
@@ -165,11 +169,75 @@
                             sqr.params.x = sqr.params.x-l;
                             sqr.elem.css({top:sqr.params.y*50,left:sqr.params.x*50});
                             sqr.left = true;
-                            sqr.up = false;
                         }
                     }
                 }
+                for (i=0;i<elements.length;i++) elements[i].left = false;
                 return counter;
+            },
+
+            shift: function (l,h) {
+                var map = this._map,
+                    elements = this.elements,
+                    i,j,temp;
+
+                for (i=0;i<this.width;i++) {
+                    for (j=l;j<this.height;j++) {
+                        temp = map[i][j];
+                        if (temp && !temp.shifted) {
+                            temp.shifted = true;
+                            temp.params.y = temp.params.y+h;
+                            temp.elem.css({top:temp.params.y*50})
+                        }
+                    }
+                }
+                this.buildMap();
+            },
+
+            buildMap: function () {
+                var elements = this.elements,
+                    i,j;
+
+                for (i=0;i<this.width;i++) this._map[i] = new Array();
+                for (i=0;i<elements.length;i++) this.set(elements[i].params.x,elements[i].params.y,elements[i].params.r, elements[i]);
+            },
+
+            open: function (index) {
+                var elem = this.elements[index];
+
+                this.clean(elem.params.x,elem.params.y,elem.params.r);
+
+                this.shift(elem.params.y,7)
+
+                if (elem.params.x>this.width-7) elem.params.x = this.width-7;
+                this.set(elem.params.x, elem.params.y, 7, elem)
+                elem.oldClass = elem.elem.attr('class');
+                console.log(elem.oldClass);
+                elem.elem.removeClass().addClass('xl');
+
+                while(this.allTop() != 0 || this.allLeft() != 0) {}
+
+
+                this.height = this.getHeight();
+                this.wrapper.height(this.height*50);
+
+            },
+
+            getHeight: function () {
+                var stop = false,
+                    i,h=0;
+
+                while (!stop) {
+                    stop = true;
+                    for (i=0;i<this.width;i++) {
+                        if (this._map[i][h] !== undefined) {
+                            stop = false;
+                            h++;
+                            break;
+                        }
+                    }
+                }
+                return h;
             },
 
             build: function (wrapper) {
@@ -210,7 +278,7 @@
                 // теперь смещаем все вверх и вправо
                 while(this.allTop() != 0 || this.allLeft() != 0) {}
 
-                // Теперь забиваем пустоты
+                // // Теперь забиваем пустоты
                 // i = this.squares.length-1;
                 // temp = this.findSpace(this.types[this.squares[i].type].r);
                 // while (temp) {
@@ -223,14 +291,19 @@
                 //     i--;
                 //     temp = this.findSpace(this.types[this.squares[i].type].r);
                 // }
-
-                wrapper.height((y+max)*50);
+                this.height = this.getHeight();
+                wrapper.height(this.height*50);
             }
         }
         $(function() {
             $('.button')
                 .click(function() {
                     builder.build($('.wrapper'))
+
+                    $('.block')
+                        .click(function() {
+                            builder.open($('.block').index(this))
+                        })
                 })
                 .trigger('click');
         })
@@ -247,7 +320,7 @@
             overflow: hidden;
             position: relative;
         }
-        .s, .m, .l {
+        .s, .m, .l, .xl {
             position: absolute;
             transition: all 300ms ease;
             border:1px solid #ccc;
@@ -268,6 +341,11 @@
             height: 250px;
             width: 250px;
             background: #B44F4F;
+        }
+        .xl {
+            height: 350px;
+            width: 350px;
+            background: #FF9C08;
         }
     </style>
 </head>

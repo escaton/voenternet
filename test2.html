@@ -191,7 +191,10 @@
                         }
                     }
                 }
+                for (i=0;i<elements.length;i++) elements[i].shifted = false;
                 this.buildMap();
+
+                this.height = this.getHeight();
             },
 
             buildMap: function () {
@@ -199,68 +202,78 @@
                     i,j;
 
                 for (i=0;i<this.width;i++) this._map[i] = new Array();
-                for (i=0;i<elements.length;i++) this.set(elements[i].params.x,elements[i].params.y,elements[i].params.r, elements[i]);
+                for (i=0;i<elements.length;i++) 
+                    this.set(
+                        elements[i].params.x,
+                        elements[i].params.y,
+                        elements[i].params.r,
+                        elements[i]
+                    );
             },
 
             open: function (index) {
-                var elem = this.elements[index];
+                var elements = this.elements,
+                    elem = elements[index],
+                    i;
+
+                $('.xl').removeClass('xl');
+
+                for (i=0;i<elements.length;i++) {
+                    elements[i].params.x = elements[i].init_params.x;
+                    elements[i].params.y = elements[i].init_params.y;
+                    elements[i].params.r = elements[i].init_params.r;
+                }
+                this.buildMap();
 
                 this.clean(elem.params.x,elem.params.y,elem.params.r);
 
-                this.shift(elem.params.y,7+5)
+                this.shift(elem.params.y,7+5);
 
                 if (elem.params.x>this.width-7) elem.params.x = this.width-7;
                 this.set(elem.params.x, elem.params.y, 7, elem)
-                elem.oldClass = elem.elem.attr('class');
-                console.log(elem.oldClass);
-                elem.elem.removeClass().addClass('xl');
-
+                elem.elem.addClass('xl');
+                elem.params.r = 7;
                 while(this.allTop() != 0 || this.allLeft() != 0) {}
 
 
                 this.height = this.getHeight();
-                this.wrapper.height(this.height*50);
+                this.wrapper.height((this.height)*50);
 
             },
 
             getHeight: function () {
-                var stop = false,
+                var elements = this.elements,
                     i,h=0;
 
-                while (!stop) {
-                    stop = true;
-                    for (i=0;i<this.width;i++) {
-                        if (this._map[i][h] !== undefined) {
-                            stop = false;
-                            h++;
-                            break;
-                        }
-                    }
+                for (i=0;i<elements.length;i++) {
+                    h = Math.max(h, elements[i].params.y+elements[i].params.r)
                 }
                 return h;
             },
 
             build: function (wrapper) {
+
                 this.init(wrapper);
                 var x=0,y=0,max=0,
                     i=0,j=0,
                     temp,
-                    map = this._map;
+                    map = this._map,
+                    elements = this.elements;
 
                 // Расставляем первый раз
                 temp = this.types[this.squares[i].type];
-                while (i<this.elements.length) {
+                while (i<elements.length) {
 
                     if (x !=0) temp = this.types[this.squares[i].type];
 
                     if (this.check(x,y,temp.r)) {
 
-                        this.set(x,y,temp.r, this.elements[i]);
-                        this.elements[i].elem
+                        this.set(x,y,temp.r, elements[i]);
+                        elements[i].elem
                             .addClass(temp.size)
                             .css({top:y*50,left:x*50})
                             .appendTo(wrapper);
-                        this.elements[i].params = {x: x, y: y, r:temp.r};
+                        elements[i].params = {x: x, y: y, r:temp.r};
 
                         x += temp.r;
                         i++;
@@ -278,19 +291,30 @@
                 // теперь смещаем все вверх и вправо
                 while(this.allTop() != 0 || this.allLeft() != 0) {}
 
+                // сохраняем начальное положение
+                for (i=0;i<elements.length;i++) {
+                    elements[i].init_params = {};
+                    elements[i].init_params.x = elements[i].params.x;
+                    elements[i].init_params.y = elements[i].params.y;
+                    elements[i].init_params.r = elements[i].params.r;
+                }
+
                 // // Теперь забиваем пустоты
                 // i = this.squares.length-1;
                 // temp = this.findSpace(this.types[this.squares[i].type].r);
                 // while (temp) {
-                //     this.set(temp.x, temp.y, this.types[this.squares[i].type].r, this.elements[i]);
-                //     this.clean(this.elements[i].params.x, this.elements[i].params.y, this.types[this.squares[i].type].r)
+                //     this.set(temp.x, temp.y, this.types[this.squares[i].type].r, elements[i]);
+                //     this.clean(elements[i].params.x, elements[i].params.y, this.types[this.squares[i].type].r)
 
-                //     this.elements[i].params = {x: temp.x, y: temp.y, r: this.types[this.squares[i].type].r};
-                //     this.elements[i].elem
-                //         .css({top:this.elements[i].params.y*50,left:this.elements[i].params.x*50})
+                //     elements[i].params = {x: temp.x, y: temp.y, r: this.types[this.squares[i].type].r};
+                //     elements[i].elem
+                //         .css({top:elements[i].params.y*50,left:elements[i].params.x*50})
                 //     i--;
                 //     temp = this.findSpace(this.types[this.squares[i].type].r);
                 // }
+
+                this.open(0)
+
                 this.height = this.getHeight();
                 wrapper.height(this.height*50);
             }

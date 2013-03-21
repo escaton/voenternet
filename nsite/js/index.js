@@ -209,7 +209,9 @@ var Builder = function() {
                 i,
                 temp;
 
-            this.wrapper.find('.xl').removeClass('xl');
+            console.log(index)
+
+            this.wrapper.find('.rb_sbig').removeClass('rb_sbig');
 
             for (i=0;i<elements.length;i++) {
                 elements[i].params.r = elements[i].init_params.r;
@@ -220,7 +222,7 @@ var Builder = function() {
             if (elem.params.x>this.width-7) elem.params.x = this.width-7;
             elem.params.r = 7;
             this.set(elem.params.x, elem.params.y, elem.params.r, elem)
-            elem.elem.addClass('xl');
+            elem.elem.addClass('rb_sbig');
 
 
             this.height = Infinity;
@@ -233,6 +235,11 @@ var Builder = function() {
                 elements[i].elem
                     .css({top:elements[i].params.y*50,left:elements[i].params.x*50})
             }
+
+            this.height = this.getHeight();
+            this.wrapper.height((this.height)*50);
+
+            while (this.allTop() || this.allLeft()) {}
 
             this.height = this.getHeight();
             this.wrapper.height((this.height)*50);
@@ -297,6 +304,12 @@ $(function() {
 
     cBlocks.build($('.cblocks'))
     rBlocks.build($('.rb_blocks'))
+
+    $('.rb_blocks li')
+        .click(function() {
+            rBlocks.open($('.rb_blocks li').index(this))
+            return false;
+        })
 })
 
 

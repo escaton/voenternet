@@ -1,57 +1,488 @@
-<!Doctype html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ru">     
 <head>
-    <meta charset="utf-8">
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
-    <title>voenternet</title>
-    <link rel="stylesheet" href="index.css" />
+	<title>Заголовок</title>  	
+	<link rel="stylesheet" href="nsite/style.css?2" type="text/css" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+	<!-- jQuery -->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js" ></script>
+	
+	<script type="text/javascript" src="nsite/js/css_browser_selector.js" ></script>
+	<script type="text/javascript" src="nsite/js/index.js" ></script>
+	
+	                                                
 </head>
-<body>
-    <div class="header">
-        header
-    </div>
-    <div class="menu">
-        <div class="menu_item"></div>
-        <div class="menu_item"></div>
-        <div class="menu_item"></div>
-        <div class="menu_item"></div>
-        <div class="menu_item"></div>
-        <div class="menu_item"></div>
-        <div class="menu_item"></div>
-        <div class="menu_item"></div>
-        <div class="menu_item"></div>
-        <div class="menu_item"></div>
-        <div class="menu_item"></div>
-        <div class="menu_item"></div>
-        <div class="menu_item"></div>
-        <div class="menu_item"></div>
-        <div class="menu_item"></div>
-        <div class="menu_item"></div>
-        <div class="menu_item"></div>
-        <div class="menu_item"></div>
-        <div class="menu_item"></div>
-        <div class="menu_item"></div>
-    </div>
-    <div class="wrapper">
-        <div class="left_col">
-            <div class="block block_l"></div>
-            <div class="block block_xs"></div>
-            <div class="block block_xs"></div>
-            <div class="block block_m"></div>
-            <div class="block block_s"></div>
-            <div class="block block_xs"></div>
-            <div class="block block_xs"></div>
-        </div>
-        <div class="center_col">
-            <div class="block block_xl"></div>
-            <div class="block block_s"></div>
-            <div class="block block_s"></div>
-            <div class="block block_l"></div>
-            <div class="block block_l"></div>
-        </div>
-        <div class="right_col">
-            <div class="block block_l"></div>
-        </div>
-    </div
+<!-- Для главной страницы у тега body должен быть класс index, он отвечает за вид страницы как на главном макете (profile non active-01). Без него, главная будет выглядеть как внутренняя -->
+<body class="index">
+	<div id="main">
+		<div id="header">
+			<div class="bg_page"></div>
+			<div class="wrap">
+				
+				<a href="/" class="logo">Воентернет - военный интернет</a>
+				
+				<ul class="menu_t menu_h l">
+					<li><a href="#">ОБСТАНОВКА</a></li>
+					<li><a href="#">ЖУРНАЛЫ</a></li>
+					<li class="deact"><a href="#">ССЫЛКИ</a></li>
+					<li><a href="#">ПРОЕКТЫ</a></li>
+					<li class="deact"><a href="#">ЯПРААФ</a></li>
+					<li class="deact"><a href="#">АРХИВ</a></li>
+					<li class="deact"><a href="#">БИРКИ</a></li>
+					<li class="deact"><a href="#">КЛУБ</a></li>
+					<li class="deact"><a href="#">КУРИЛКА</a></li>
+					<li class="deact"><a href="#">КАПТЕРКА</a></li>
+				</ul><!-- menu_h -->
+				
+				<ul class="menu_t autoriz l">
+					<li><a href="#">ЗВУК. ФОТО</a></li>
+					<li class="deact"><a href="#">СОЛД. РАДИО</a></li>
+					<li class="deact"><a href="#">ТРЕВОГА</a></li>
+					<li class="deact"><a href="#">СТРОЕВАЯ ЧАСТЬ</a></li>
+					<li><a href="#">О ПРОЕКТЕ</a></li>
+					<li class="active"><a href="#">ВХОД</a></li>
+				</ul>
+
+				<!-- Для авторизованного пользователя -->
+				<!--
+<ul class="menu_t autoriz l">
+					<li><a href="#">ЗВУК. ФОТО</a></li>
+					<li class="deact"><a href="#">СОЛД. РАДИО</a></li>
+					<li class="deact"><a href="#">ТРЕВОГА</a></li>
+					<li class="deact"><a href="#">СТРОЕВАЯ ЧАСТЬ</a></li>
+					<li class="user_h"><a href="#">АЛЕКСАНДР РОШКА<span></span></a></li>
+				</ul>
+-->
+				<!-- Для красного индикатора необходимо добавить класс exit (<li class="user_h exit">) -->
+				
+				<!--
+<ul class="menu_t l autoriz login">
+					<li class="border_top">&nbsp;</li>
+					<li><a href="#">Звук. Фото</a></li>
+					<li class="deact"><a href="#">Солд. Радио</a></li>
+					<li class="deact"><a href="#">Тревога</a></li>
+					<li><span><input type="text" value="E-mail" onfocus="this.value=(this.value=='E-mail')? '' : this.value ;" /></span></li>
+					<li><span><input type="text" value="Пароль" onfocus="this.value=(this.value=='Пароль')? '' : this.value ;" /></span></li>
+					<li class="active"><span><input type="submit" value="Вход" /></span></li>
+					<li><a href="#">Вход с FB</a></li>
+					<li><a href="#">Вход с ЖЖ</a></li>
+					<li class="deact"><a href="#">Регистрация</a></li>
+					<li><a href="#">Вход с ВК</a></li>
+					<li><a href="#">Вход с TW</a></li>
+					<li><a href="#">Отмена</a></li>
+				</ul>
+-->
+				
+				<div class="clear"></div>
+				
+				<ul class="menu">
+					<li><a href="#" class="item_m1"></a></li>
+					<li><a href="#" class="item_m2"></a></li>
+					<li><a href="#" class="item_m3"></a></li>
+					<li><a href="#" class="item_m4"></a></li>
+					<li><a href="#" class="item_m5"></a></li>
+					<li><a href="#" class="item_m6"></a></li>
+					<li><a href="#" class="item_m7"></a></li>
+					<li><a href="#" class="item_m8"></a></li>
+					<li><a href="#" class="item_m9"></a></li>
+					<li><a href="#" class="item_m10"></a></li>
+					<li><a href="#" class="item_m11"></a></li>
+					<li><a href="#" class="item_m12"></a></li>
+					<li><a href="#" class="item_m13"></a></li>
+					<li><a href="#" class="item_m14"></a></li>
+					<li><a href="#" class="item_m15"></a></li>
+					<li><a href="#" class="item_m16"></a></li>
+					<li><a href="#" class="item_m17"></a></li>
+					<li><a href="#" class="item_m18"></a></li>
+					<li><a href="#" class="item_m19"></a></li>
+					<li><a href="#" class="item_m20"></a></li>
+				</ul><!-- menu -->
+				
+			</div>
+		</div><!-- header -->
+		<div id="content">
+			<div class="wrap">
+				
+				<div class="l_block">
+					
+					<!-- Для этого блока есть второй стиль с серым фоном, для смены стиля на серый фон, необходимо добавить класс nj_grey (<div class="nj nj_grey">) -->
+					<div class="nj">
+						<h1>Нж</h1>
+						<h2>Название журнала</h2>
+						<div class="marker"></div>
+						<div class="user"><em><a href="#">ссылка на профайл</a></em><strong>Имя Фамилия</strong></div>
+						<div class="user_info">
+							<div class="l"><img src="nsite/img/_img.jpg" alt="_img" /></div>
+							<div class="r">
+								<em>показатель<strong class="color">+00000</strong></em>
+								<em>lightItalic10pt<strong>bold</strong></em>
+								<em>interligne<strong>12pt</strong></em>
+								<em>видео<strong>00000</strong></em>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<p>Краткое содержание журнала в целом, наиболее и наименее интересные темы в общих словах, но не более 110 знаков</p>
+						<em class="pnj"><a href="#">подписка на журнал</a></em>
+					</div><!-- nj -->
+					
+					<div class="info_block_l">Накануне годовщины победы в сталинградской битве слетал в волгоград. заранее решил выделить время на прогулку по городу и даже составил для себя план мероприятий. Удалось не всё, но тем не менее поделюсь впечатлениями от прогулок по городу. </div>
+					
+					<div class="trivia">
+						<div class="control l"><a href="#">+</a><a href="#" class="minus">&ndash;</a><a href="#">&asymp;</a><a href="#">=</a></div>
+						<div class="post_t"><div class="l"><p>ПОСТ</p></div><span>+ <a href="#">добавить</a></span><span>&ndash; <a href="#">удалить</a></span><span>&asymp; <a href="#">изменить</a></span><span>= <a href="#">ввод</a></span></div>
+						<div class="clear"></div>
+						<ul>
+							<li><span>&nbsp;</span>ЛЕНТА</li>
+							<li class="active"><span>&nbsp;</span>ПОРЯДОК</li>
+						</ul>
+						<div class="clear"></div>
+						<div class="big">
+							<span class="active"><span>&nbsp;</span>ДАТА</span>
+							<span><span>&nbsp;</span>ПРОСМОТР</span>
+							<span><span>&nbsp;</span>ПОКАЗАТЕЛЬ</span>
+							<span><span>&nbsp;</span>ПОКАЗАТЕЛЬ</span>
+						</div>
+						<ul>
+							<li class="active"><span>&nbsp;</span>ЛЮДИ</li>
+							<li class="active"><span>&nbsp;</span>ОРУЖИЕ</li>
+							<li class="active"><span>&nbsp;</span>ВОЙНА</li>
+							<li class="active"><span>&nbsp;</span>АРМИЯ</li>
+							<li class="active"><span>&nbsp;</span>ТЕКСТ</li>
+							<li class="active"><span>&nbsp;</span>ФОТО</li>
+							<li class="active"><span>&nbsp;</span>ВИДЕО</li>
+						</ul>
+						<div class="clear"></div>
+						<div class="big">
+							<span class="active"><span>&nbsp;</span>ПОЛНОСТЬЮ</span>
+							<span><span>&nbsp;</span>9 ЛУЧШИХ</span>
+							<span><span>&nbsp;</span>9 ХУДШИХ</span>
+							<span><span>&nbsp;</span>1 СЛУЧАЙНОЕ</span>
+						</div>
+						<div class="clear"></div>
+					</div><!-- trivia -->
+					
+					<div class="poligon p_grey">
+						<img src="nsite/img/_img2.jpg" alt="_img2" />
+						<h3>ПОЛИГОН PF DinDisplay Pro Bold 10</h3>
+						<h4><em>записки на военных полях light italic</em></h4>
+						<div class="marker"></div>
+						<ul>
+							<li><a href="#">содержание</a></li>
+							<li><a href="#">подписка</a></li>
+						</ul>
+						<h1>По</h1>
+						<em>показатель <strong class="color">+0057</strong><br />текст <strong>0019</strong> фото <strong>0325</strong> видео <strong>0005</strong></em>
+						<p>Краткое содержание журнала в целом, наиболее и наименее интересные темы в общих словах, но не более 110 знаков</p>
+					</div><!-- poligon -->
+					
+<!--
+					Для разных цветов необходимо добавлять соответствующие классы: 
+						cb_blue - голубой фон
+						cb_red - красный фон
+						cb_orange - оранжевый
+						cb_green - салатовый
+						cb_black - темно коричневый
+						например <li class="cb_blue"></li>
+					Для изменения размеров блоков, необходимо использовать дополнительные классы:
+						cb_big - самый большой блок
+						cb_medium - средний блок
+						например <li class="cb_big"></li>
+					Для пустых ячеек, необходимо использовать дополнительный класс cb_empty
+						например <li class="cb_empty"></li>
+					Для правильной состыковки блоков (поднятие их на определенную высоту), необходимо использовать дополнительные классы:
+						cb_mtop_b - поднятие блока на два квадрата
+						cb_mtop_s - поднятие блока на один квадрат
+						например <li class="cb_mtop_b"></li>
+					Соответственно добавляя дополнительные классы, блоки можно располагать как угодно, любыми размерами и цветами
+					Шаблон для больших блоков:
+						<li class="cb_big">
+							<h1>Ма</h1>
+							<p><strong>ее звали марта</strong></p>
+							<div class="marker"></div>
+							<em><a href="#">содержание</a></em>
+							<div class="info_block">
+								<em>показатель <strong class="color">+00057</strong></em>
+								<em>текст <strong>00519</strong></em>
+								<em>фото <strong>01325</strong></em>
+								<em>видео <strong>01325</strong></em>
+							</div>
+						</li>
+					Шаблон для средних блоков:
+						<li class="cb_medium">
+							<h3>Сигида</h3>
+							<div class="marker"></div>
+							<em><a href="#">содержание</a></em>
+							<h1>Си</h1>
+						</li>
+					
+-->
+					<ul class="cblocks">
+						<li class="cblock cb_big">
+							<h1>Ма</h1>
+							<p><strong>ее звали марта</strong></p>
+							<div class="marker"></div>
+							<em><a href="#">содержание</a></em>
+							<div class="info_block">
+								<em>показатель <strong class="color">+00057</strong></em>
+								<em>текст <strong>00519</strong></em>
+								<em>фото <strong>01325</strong></em>
+								<em>видео <strong>01325</strong></em>
+							</div>
+						</li>
+						<li class="cblock cb_blue"><a href="#">Си</a></li>
+						<li class="cblock cb_red"><a href="#">Ма</a></li>
+						<li class="cblock"><a href="#">Зф</a></li>
+						<li class="cblock cb_green"><a href="#">См</a></li>
+						<li class="cblock cb_empty"></li>
+						<li class="cblock cb_black"><a href="#">Вм</a></li>
+						<li class="cblock cb_orange"><a href="#">Ца</a></li>
+						<li class="cblock"><a href="#">Зф</a></li>
+						<li class="cblock cb_green"><a href="#">См</a></li>
+						<li class="cblock cb_empty"></li>
+						<li class="cblock cb_red"><a href="#">Ма</a></li>
+						<li class="cblock cb_green"><a href="#">См</a></li>
+						<li class="cblock"><a href="#">Зф</a></li>
+						<li class="cblock cb_big">
+							<h1>По</h1>
+							<p><strong>полигон</strong><em>записки на военных полях</em></p>
+							<div class="marker"></div>
+							<em><a href="#">содержание</a></em>
+							<div class="info_block">
+								<em>показатель <strong class="color">+00057</strong></em>
+								<em>текст <strong>00519</strong></em>
+								<em>фото <strong>01325</strong></em>
+								<em>видео <strong>01325</strong></em>
+							</div>
+						</li>
+						<li class="cblock cb_blue cb_medium">
+							<h3>Сигида</h3>
+							<div class="marker"></div>
+							<em><a href="#">содержание</a></em>
+							<h1>Си</h1>
+						</li>
+						<li class="cblock cb_orange"><a href="#">Ца</a></li>
+						<li class="cblock"><a href="#">Зф</a></li>
+						<li class="cblock cb_green"><a href="#">См</a></li>
+						<li class="cblock cb_blue"><a href="#">Си</a></li>
+						<li class="cblock cb_red"><a href="#">Ма</a></li>
+						<li class="cblock cb_big">
+							<h1>Ма</h1>
+							<p><strong>ее звали марта</strong></p>
+							<div class="marker"></div>
+							<em><a href="#">содержание</a></em>
+							<div class="info_block">
+								<em>показатель <strong class="color">+00057</strong></em>
+								<em>текст <strong>00519</strong></em>
+								<em>фото <strong>01325</strong></em>
+								<em>видео <strong>01325</strong></em>
+							</div>
+						</li>
+						<li class="cblock cb_blue"><a href="#">Си</a></li>
+						<li class="cblock cb_red"><a href="#">Ма</a></li>
+						<li class="cblock"><a href="#">Зф</a></li>
+						<li class="cblock cb_green"><a href="#">См</a></li>
+						<li class="cblock cb_empty"></li>
+						<li class="cblock cb_black"><a href="#">Вм</a></li>
+					</ul>
+					
+				</div><!-- l_block -->
+				
+				<div class="m_block">
+					<div class="cont">
+						
+						<div class="control l"><a href="#">+</a><a href="#" class="minus">&ndash;</a><a href="#">&asymp;</a><a href="#">=</a></div>
+						<div class="stat_title">
+							<h1>Заголовок BOLD15PT TRACKING80</h1>
+							<div class="marker"></div>
+							<ul class="menu_cont"><li><a href="#">страница</a></li><li class="red"><a href="#">бирка</a></li><li><a href="#">архив track80</a></li></ul>
+						</div><!-- stat_title -->
+						<div class="clear"></div>
+						
+						<img src="nsite/img/_img.jpg" alt="_img" width="475" height="317" />
+						<em class="podpis">Подпись к фото light italic14pt track80</em>
+						<p>PF DinDisplay Pro Light 12pt tracking 80 interligne 15pt победы в Сталинградской битве слетал в Волгоград. Заранее решил выделить время на прогулку по городу и даже составил для себя план мероприятий. Удалось не всё, но тем не менее поделюсь впечатлениями от прогулок по городу. Начну с того чего не получилось. Очень хотел попасть в музей Волгоградского тракторного завода. Даже отправил официальный запрос. Получил вот такой ответ: «В соответствии с установленными в нашем холдинге процедурами обязательного согласования посещения музея Волгоградского тракторного завода организовать срочную экскурсию для корреспондента завтра, 25 января, не представляется возможным».  Теперь из того, что успел. Естественно, пошёл в историко-мемориальный музей-заповедник «Сталинградская битва».</p>
+						
+						<div class="rating">
+							<div class="cblock cb_orange">Ца</div>
+							<div class="switch">
+								<a href="#" class="add">+</a>
+								<span>00057</span>
+								<a href="#" class="del">&ndash;</a>
+								<div class="clear"></div>
+							</div>
+							<div class="rat_info">
+								<div>отзывов <span>00519</span></div>
+								<div>просмотров <span>01325</span></div>
+							</div>
+						</div><!-- rating -->
+							
+						<div class="post_end"><span>граница поста</span></div>
+						<div class="clear"></div>
+
+					</div><!-- cont -->
+					
+					<div class="post_links">
+						<ul class="menu_t">
+							<li><a href="#">Отзыв</a></li>
+							<li><a href="#">Фейсбук</a></li>
+							<li><a href="#">Живой журнал</a></li>
+							<li><a href="#">Твиттер</a></li>
+							<li><a href="#">Сброс</a></li>
+							<li><a href="#">Вконтакте</a></li>
+							<li><a href="#">Гугл+</a></li>
+							<li><a href="#">Почта</a></li>
+						</ul>
+						<div class="clear"></div>
+					</div>
+					
+					<div class="block_comment">
+						<h1>Все отзывы 519</h1>
+						<div class="comment">
+							<div class="l"><img src="nsite/img/_img.jpg" alt="_img" width="50" height="50" /><span>00055</span></div>
+							<div class="r">
+								<h3>Александр Рошка</h3>
+								<p>Не успел только потому, что физически не хватило времени. Надеюсь в скором времени опять посетить славный город Волгоград и завершить то, что запланировал и обещал.</p>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="comment grey">
+							<div class="l"><img src="nsite/img/_img.jpg" alt="_img" width="50" height="50" /><span>00056</span></div>
+							<div class="r">
+								<h3 class="star">Александр Рошка</h3>
+								<p>Не успел только потому, что физически не хватило времени. Надеюсь в скором времени опять посетить славный город Волгоград и завершить то, что запланировал и обещал.</p>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="comment">
+							<div class="l"><img src="nsite/img/_img.jpg" alt="_img" width="50" height="50" /><span>00057</span></div>
+							<div class="r">
+								<h3 class="star">Александр Рошка</h3>
+								<p>Не успел только потому, что физически не хватило времени. Надеюсь в скором времени опять посетить славный город Волгоград и завершить то, что запланировал и обещал.</p>
+							</div>
+							<div class="clear"></div>
+						</div>
+						<div class="add_comment">
+							<div class="ac_block">
+								<h3 class="star">Александр Рошка</h3>
+								<form action="#" method="post">
+									<input type="hidden" value="par" />
+									<textarea rows="4" cols="53"></textarea>
+									<input type="submit" value="Отправить" />
+								</form>
+								<em>осталось <strong> 00045</strong> сек</em>
+							</div>
+						</div>
+					</div><!-- block_comment -->
+					
+					<div class="cont">
+						
+						<div class="block_middle">
+							<img src="nsite/img/_img13.png" alt="_img13" width="374" height="195" />
+							<h1>Мой сталинград</h1>
+							<div class="marker"></div>
+							<ul class="menu_cont"><li class="red"><a href="#">страница</a></li><li><a href="#">бирка</a></li><li><a href="#">архив</a></li></ul>
+							<p>Накануне годовщины победы в Сталинградской битве слетал в Волгоград. Заранее решил выделить время на прогулку по городу и даже составил для себя план мероприятий. Удалось не всё, но тем не менее поделюсь впечатлениями от прогулок</p>
+							<div class="block_info">
+								<div class="l"><img src="nsite/img/_img.jpg" alt="_img" /></div>
+								<div class="r">
+									<em>отзыв<strong>00519</strong></em>
+									<em>просмотр<strong>01325</strong></em>
+									<em>показатель<strong class="color">+00000</strong></em>
+								</div>
+								<div class="clear"></div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="m_block_end"></div>
+				</div><!-- m_block -->
+
+<!--
+				Все внутренние блоки в правой колонке сайта по-умолчанию маленькие с белым фоном
+				Для серого фона, необходимо добавить класс rb_grey
+					например <li class="rb_grey"></li>
+				Для размеров необходимо использовать класс:
+					rb_big - большой размер
+					rb_medium - средний размер
+					rb_small - размер одного квадрата (самый маленький, используется для пустых обласней, совместно с классом rb_empty)
+					например <li class="rb_big"></li>
+				Для пустых областей, необходимо добавить класс rb_empty
+					rb_empty
+				Для правильной состыковки блоков (поднятие их на определенную высоту), необходимо использовать дополнительные классы:
+					rb_mtop_b - поднятие блока на два квадрата
+					rb_mtop_s - поднятие блока на один квадрат
+					например <li class="rb_mtop_b"></li>
+				Класс rb_ti отвечает за оформление большого блока с заголовком и изображением
+				Чтобы добавить блоку фон-изображение, необходимо добавить класс rb_bg, а для того чтобы фон-изображение инвертировать, нужно еще добавить класс rb_inv
+-->
+				<div class="r_block">
+					
+					<ul class="rb_blocks">
+						<li class="rb_big rb_bg">
+							<iframe width="239" height="146" src="http://www.youtube.com/embed/0QavgMtBxF8" frameborder="0"></iframe>
+							<div class="marker"></div>
+							<span class="rb_cont">Анонс видеопубликации PF DinDisplay Pro Light 12pt tracking 80 interligne 15pt text centred, max: четыре строки, но не более 135 знаков</span>
+						</li>
+						<li class="rb_medium"><a href="#"><span class="resize" style="background-image: url(nsite/img/_img3.png);"></span></a></li>
+						<li class="rb_bg"><h1>АРМИЯ<small>простится</small></h1><div class="marker"></div><em><a href="#">с вещмешками</a></em></li>
+						<li class="rb_grey"><a href="#"><span class="resize" style="background-image: url(nsite/img/_img4.png);"></span><em class="title_bottom">Короткий заголовок не более 40 знаков</em></a></li>
+						<li class="rb_medium rb_bg"><a href="#"><img src="nsite/img/_img7.png" alt="_img7" /><span class="rb_cont"><strong>Первая строка</strong>публикации PF DinDisplay Pro Light 11pt не более 75 знаков</span></a></li>
+						<li class="rb_grey"><a href="#"><span class="resize" style="background-image: url(nsite/img/_img5.png);"></span></a></li>
+						<li class="rb_big rb_bg"><a href="#"><span class="resize" style="background-image: url(nsite/img/_img8.png);"></span><span class="marker"></span><span class="rb_cont">Анонс видеопубликации PF DinDisplay Pro Light 12pt tracking 80 interligne 15pt text centred, max: четыре строки, но не более 135 знаков</span></a></li>
+						<li class="rb_bg"><h1>НА<small>поле</small></h1><div class="marker"></div><em><a href="#">танки грохотали</a></em></li>
+						<li class="rb_grey"><a href="#"><span class="resize" style="background-image: url(nsite/img/_img4.png);"></span></a></li>
+						<li class="rb_grey"><a href="#"><span class="resize" style="background-image: url(nsite/img/_img5.png);"></span></a></li>
+						<li class="rb_medium rb_grey rb_bg">
+							<div class="haos">
+								<a href="#">
+									<strong class="lh3">ПЕРВОЕ </strong>
+									<span class="lh1">предложение </span>
+									<span class="lh3">в публикации </span>
+									<span class="lh5">набранное разным </span>
+									<strong class="lh9">кеглем, </strong>
+									<span class="lh7">отцентрованное </span>
+									<span class="lh7">внутри бокса и </span>
+									<span class="lh1">равным интерлиньяжем </span>
+									<span class="lh6">PF DinDisplay Pro</span>
+								</a>
+							</div>
+						</li>
+						<li class="rb_big rb_grey rb_gal">
+							<img src="nsite/img/_img9.png" alt="_img9" />
+							<div class="img_gal">
+								<img src="nsite/img/_img10.png" alt="_img10" />
+								<img src="nsite/img/_img11.png" alt="_img11" />
+								<img src="nsite/img/_img10.png" alt="_img10" />
+							</div>
+							<div class="clear"></div>
+							<strong>Заголовок публикации max 2 строки, max 50 знаков</strong>
+						</li>
+						
+						<li class="rb_big rb_grey rb_ti"><h1>Накануне годовщины победы в</h1><a href="#"><span class="resize" style="background-image: url(nsite/img/_img12.png);"></span></a></li>
+						<li class="rb_big rb_grey rb_ti"><a href="#"><span class="resize" style="background-image: url(nsite/img/_img12.png);"></span></a><h1>Накануне годовщины победы в</h1></li>
+						<li class="rb_big rb_ips rb_grey">
+							<img src="nsite/img/_img5.png" alt="_img5" />
+							<p><strong>Накануне годовщины</strong>победы в сталинградской битве слетал в волгоград. заранее решил выделить время на прогулку по накануне не более 140 знаков</p>
+						</li>
+						<li class="rb_big rb_bg rb_grey">
+              <p class="full_text"><strong>подводная</strong> лодка похожа на женщину своим торпедным люком и склонностью к тайным диверсионным операциям. <strong>обе</strong> могут уйти на дно месяца на два и там существовать в автономном режиме, ведя скрытную военную борьбу. <strong>обе</strong> способны утянуть в непроницаемые глубины десятки мужчин и погубить – или уберечь. <strong>поэтому</strong>, когда женщина отправляется на свою первую подлодку, ей следует быть во всеоружии, как перед встречей с соперницей. К тому же, велик шанс найти там героического мужчину, чьи глаза горят особенно ярко на бледном незагорелом лице, и вызволить его из подводного плена.
+Но по закону мировой несправедливости, судьбоносные встречи чаще всего происходят в моменты растерянности и наибольшей уязвимости.</p>
+						</li>
+						<li class="rb_big">
+							<span>НАКАНУНЕ ГОДОВЩИНЫ ПОБЕДЫ В СТАЛИНГРАДСКОЙ БИТВЕ СЛЕТАЛ В ВОЛГОГРАД. ЗАРАНЕЕ РЕШИЛ ВЫДЕЛИТЬ ВРЕМЯ НА ПРОГУЛКУ ПО ГОРОДУ И ДАЖЕ СОСТАВИЛ ДЛЯ СЕБЯ ПЛАН МЕРОПРИЯТИЙ. УДАЛОСЬ НЕ ВСЁ, НО ТЕМ НЕ МЕНЕЕ ПОДЕЛЮСЬ ВПЕЧАТЛЕНИЯМИ ОТ ПРОГУЛОК ПО ГОРОДУ.</span>
+						</li>
+						
+					</ul>
+
+				</div><!-- r_block -->
+				
+				<div class="clear"></div>
+				
+			</div>
+		</div><!-- content -->
+		<div id="footer"></div>
+	</div><!-- main -->
 </body>
 </html>

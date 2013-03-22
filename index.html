@@ -10,11 +10,9 @@
 	
 	<script type="text/javascript" src="nsite/js/css_browser_selector.js" ></script>
 	<script type="text/javascript" src="nsite/js/index.js" ></script>
-	
 	                                                
 </head>
-<!-- Для главной страницы у тега body должен быть класс index, он отвечает за вид страницы как на главном макете (profile non active-01). Без него, главная будет выглядеть как внутренняя -->
-<body class="index">
+<body>
 	<div id="main">
 		<div id="header">
 			<div class="bg_page"></div>
@@ -175,115 +173,40 @@
 						<em>показатель <strong class="color">+0057</strong><br />текст <strong>0019</strong> фото <strong>0325</strong> видео <strong>0005</strong></em>
 						<p>Краткое содержание журнала в целом, наиболее и наименее интересные темы в общих словах, но не более 110 знаков</p>
 					</div><!-- poligon -->
-					
-<!--
-					Для разных цветов необходимо добавлять соответствующие классы: 
-						cb_blue - голубой фон
-						cb_red - красный фон
-						cb_orange - оранжевый
-						cb_green - салатовый
-						cb_black - темно коричневый
-						например <li class="cb_blue"></li>
-					Для изменения размеров блоков, необходимо использовать дополнительные классы:
-						cb_big - самый большой блок
-						cb_medium - средний блок
-						например <li class="cb_big"></li>
-					Для пустых ячеек, необходимо использовать дополнительный класс cb_empty
-						например <li class="cb_empty"></li>
-					Для правильной состыковки блоков (поднятие их на определенную высоту), необходимо использовать дополнительные классы:
-						cb_mtop_b - поднятие блока на два квадрата
-						cb_mtop_s - поднятие блока на один квадрат
-						например <li class="cb_mtop_b"></li>
-					Соответственно добавляя дополнительные классы, блоки можно располагать как угодно, любыми размерами и цветами
-					Шаблон для больших блоков:
-						<li class="cb_big">
-							<h1>Ма</h1>
-							<p><strong>ее звали марта</strong></p>
-							<div class="marker"></div>
-							<em><a href="#">содержание</a></em>
-							<div class="info_block">
-								<em>показатель <strong class="color">+00057</strong></em>
-								<em>текст <strong>00519</strong></em>
-								<em>фото <strong>01325</strong></em>
-								<em>видео <strong>01325</strong></em>
+
+					<ul class="rb_blocks">
+						<li class="rb rb_cb rb_sq3">
+							<div class="rb_padding">
+								<h1>По</h1>
+								<p><strong>полигон</strong><em>записки на военных полях</em></p>
+								<div class="marker"></div>
+								<em><a href="#">содержание</a></em>
+								<div class="info_block">
+									<em>показатель <strong class="color">+00057</strong></em>
+									<em>текст <strong>00519</strong></em>
+									<em>фото <strong>01325</strong></em>
+									<em>видео <strong>01325</strong></em>
+								</div>
 							</div>
 						</li>
-					Шаблон для средних блоков:
-						<li class="cb_medium">
-							<h3>Сигида</h3>
-							<div class="marker"></div>
-							<em><a href="#">содержание</a></em>
-							<h1>Си</h1>
-						</li>
-					
--->
-					<ul class="cblocks">
-						<li class="cblock cb_big">
-							<h1>Ма</h1>
-							<p><strong>ее звали марта</strong></p>
-							<div class="marker"></div>
-							<em><a href="#">содержание</a></em>
-							<div class="info_block">
-								<em>показатель <strong class="color">+00057</strong></em>
-								<em>текст <strong>00519</strong></em>
-								<em>фото <strong>01325</strong></em>
-								<em>видео <strong>01325</strong></em>
+						<li style="top: 150px;" class="rb rb_cb rb_sq2 rb_blue">
+							<div class="rb_padding">
+								<h3>Сигида</h3>
+								<div class="marker"></div>
+								<em><a href="#">содержание</a></em>
+								<h1>Си</h1>
 							</div>
 						</li>
-						<li class="cblock cb_blue"><a href="#">Си</a></li>
-						<li class="cblock cb_red"><a href="#">Ма</a></li>
-						<li class="cblock"><a href="#">Зф</a></li>
-						<li class="cblock cb_green"><a href="#">См</a></li>
-						<li class="cblock cb_empty"></li>
-						<li class="cblock cb_black"><a href="#">Вм</a></li>
-						<li class="cblock cb_orange"><a href="#">Ца</a></li>
-						<li class="cblock"><a href="#">Зф</a></li>
-						<li class="cblock cb_green"><a href="#">См</a></li>
-						<li class="cblock cb_empty"></li>
-						<li class="cblock cb_red"><a href="#">Ма</a></li>
-						<li class="cblock cb_green"><a href="#">См</a></li>
-						<li class="cblock"><a href="#">Зф</a></li>
-						<li class="cblock cb_big">
-							<h1>По</h1>
-							<p><strong>полигон</strong><em>записки на военных полях</em></p>
-							<div class="marker"></div>
-							<em><a href="#">содержание</a></em>
-							<div class="info_block">
-								<em>показатель <strong class="color">+00057</strong></em>
-								<em>текст <strong>00519</strong></em>
-								<em>фото <strong>01325</strong></em>
-								<em>видео <strong>01325</strong></em>
-							</div>
-						</li>
-						<li class="cblock cb_blue cb_medium">
-							<h3>Сигида</h3>
-							<div class="marker"></div>
-							<em><a href="#">содержание</a></em>
-							<h1>Си</h1>
-						</li>
-						<li class="cblock cb_orange"><a href="#">Ца</a></li>
-						<li class="cblock"><a href="#">Зф</a></li>
-						<li class="cblock cb_green"><a href="#">См</a></li>
-						<li class="cblock cb_blue"><a href="#">Си</a></li>
-						<li class="cblock cb_red"><a href="#">Ма</a></li>
-						<li class="cblock cb_big">
-							<h1>Ма</h1>
-							<p><strong>ее звали марта</strong></p>
-							<div class="marker"></div>
-							<em><a href="#">содержание</a></em>
-							<div class="info_block">
-								<em>показатель <strong class="color">+00057</strong></em>
-								<em>текст <strong>00519</strong></em>
-								<em>фото <strong>01325</strong></em>
-								<em>видео <strong>01325</strong></em>
-							</div>
-						</li>
-						<li class="cblock cb_blue"><a href="#">Си</a></li>
-						<li class="cblock cb_red"><a href="#">Ма</a></li>
-						<li class="cblock"><a href="#">Зф</a></li>
-						<li class="cblock cb_green"><a href="#">См</a></li>
-						<li class="cblock cb_empty"></li>
-						<li class="cblock cb_black"><a href="#">Вм</a></li>
+						<li style="top: 250px;" class="rb rb_cb rb_dark_grey"><a href="#">Си</a></li>
+						<li style="top: 300px;" class="rb rb_cb rb_blue"><a href="#">Си</a></li>
+						<li style="top: 350px;" class="rb rb_cb rb_red"><a href="#">Си</a></li>
+						<li style="top: 400px;" class="rb rb_cb rb_pink"><a href="#">Си</a></li>
+						<li style="top: 450px;" class="rb rb_cb rb_dark_pink"><a href="#">Си</a></li>
+						<li style="top: 500px;" class="rb rb_cb rb_purple"><a href="#">Си</a></li>
+						<li style="top: 550px;" class="rb rb_cb rb_orange"><a href="#">Си</a></li>
+						<li style="top: 600px;" class="rb rb_cb rb_green"><a href="#">Си</a></li>
+						<li style="top: 650px;" class="rb rb_cb rb_lime"><a href="#">Си</a></li>
+						<li style="top: 700px;" class="rb rb_cb rb_black"><a href="#">Си</a></li>
 					</ul>
 					
 				</div><!-- l_block -->
@@ -399,80 +322,100 @@
 					<div class="m_block_end"></div>
 				</div><!-- m_block -->
 
-<!--
-				Все внутренние блоки в правой колонке сайта по-умолчанию маленькие с белым фоном
-				Для серого фона, необходимо добавить класс rb_grey
-					например <li class="rb_grey"></li>
-				Для размеров необходимо использовать класс:
-					rb_big - большой размер
-					rb_medium - средний размер
-					rb_small - размер одного квадрата (самый маленький, используется для пустых обласней, совместно с классом rb_empty)
-					например <li class="rb_big"></li>
-				Для пустых областей, необходимо добавить класс rb_empty
-					rb_empty
-				Для правильной состыковки блоков (поднятие их на определенную высоту), необходимо использовать дополнительные классы:
-					rb_mtop_b - поднятие блока на два квадрата
-					rb_mtop_s - поднятие блока на один квадрат
-					например <li class="rb_mtop_b"></li>
-				Класс rb_ti отвечает за оформление большого блока с заголовком и изображением
-				Чтобы добавить блоку фон-изображение, необходимо добавить класс rb_bg, а для того чтобы фон-изображение инвертировать, нужно еще добавить класс rb_inv
--->
 				<div class="r_block">
 					
+<!--
+				Для цвета фона, необходимо добавить необходимый класс, по-умолчанию установлен белый цвет
+					rb_grey - серый
+					rb_dark_grey - темно-серый
+					rb_blue - голубой
+					rb_red - красный
+					rb_pink - розовый
+					rb_dark_pink - темно-розовый
+					rb_purple - фиолетовый
+					rb_orange - оранжевый
+					rb_green - зеленый
+					rb_lime - салатовый
+					rb_black - черный
+					например <li class="rb_grey"></li>
+				Для размеров необходимо использовать классы:
+					rb_sq2 - два квадрата по фоновой сетке
+					rb_sq3 - три
+					и так далее
+					rb_sq4
+					rb_sq5 
+					rb_sq6 
+					rb_sq7 
+					rb_sq8 - самый большой
+					Наибольший размер всегда перекрывает наименьший, например если указать два класса rb_sq4 и rb_sq6, квадрат будет размеров в шесть квадратиков (по фоновой сетке)
+					например <li class="rb_big"></li>
+				Для отступов в квадратах необходимо использовать классы:
+					rb_p3 - 3 пикселя
+					rb_p5 - 5 пикселей
+					rb_p8 - 8 пикселей
+					rb_p10 - 10 пикселей
+					rb_p0 - сбрасывает отступы если указаны для определенного квадрата
+				Для стилизации блока слева, необходимо использовать класс rb_cb
+				Класс rb_ti отвечает за оформление большого блока с заголовком и изображением
+				
+				Чтобы добавить блоку фон-изображение (ТОЛЬКО для блоков rb_sq5, rb_sq3, rb_sq2), необходимо добавить класс rb_bg, а для того чтобы фон-изображение инвертировать, нужно еще добавить класс rb_inv
+-->
 					<ul class="rb_blocks">
-						<li class="rb_big rb_bg">
-							<iframe width="239" height="146" src="http://www.youtube.com/embed/0QavgMtBxF8" frameborder="0"></iframe>
-							<div class="marker"></div>
-							<span class="rb_cont">Анонс видеопубликации PF DinDisplay Pro Light 12pt tracking 80 interligne 15pt text centred, max: четыре строки, но не более 135 знаков</span>
-						</li>
-						<li class="rb_medium"><a href="#"><span class="resize" style="background-image: url(nsite/img/_img3.png);"></span></a></li>
-						<li class="rb_bg"><h1>АРМИЯ<small>простится</small></h1><div class="marker"></div><em><a href="#">с вещмешками</a></em></li>
-						<li class="rb_grey"><a href="#"><span class="resize" style="background-image: url(nsite/img/_img4.png);"></span><em class="title_bottom">Короткий заголовок не более 40 знаков</em></a></li>
-						<li class="rb_medium rb_bg"><a href="#"><img src="nsite/img/_img7.png" alt="_img7" /><span class="rb_cont"><strong>Первая строка</strong>публикации PF DinDisplay Pro Light 11pt не более 75 знаков</span></a></li>
-						<li class="rb_grey"><a href="#"><span class="resize" style="background-image: url(nsite/img/_img5.png);"></span></a></li>
-						<li class="rb_big rb_bg"><a href="#"><span class="resize" style="background-image: url(nsite/img/_img8.png);"></span><span class="marker"></span><span class="rb_cont">Анонс видеопубликации PF DinDisplay Pro Light 12pt tracking 80 interligne 15pt text centred, max: четыре строки, но не более 135 знаков</span></a></li>
-						<li class="rb_bg"><h1>НА<small>поле</small></h1><div class="marker"></div><em><a href="#">танки грохотали</a></em></li>
-						<li class="rb_grey"><a href="#"><span class="resize" style="background-image: url(nsite/img/_img4.png);"></span></a></li>
-						<li class="rb_grey"><a href="#"><span class="resize" style="background-image: url(nsite/img/_img5.png);"></span></a></li>
-						<li class="rb_medium rb_grey rb_bg">
-							<div class="haos">
-								<a href="#">
-									<strong class="lh3">ПЕРВОЕ </strong>
-									<span class="lh1">предложение </span>
-									<span class="lh3">в публикации </span>
-									<span class="lh5">набранное разным </span>
-									<strong class="lh9">кеглем, </strong>
-									<span class="lh7">отцентрованное </span>
-									<span class="lh7">внутри бокса и </span>
-									<span class="lh1">равным интерлиньяжем </span>
-									<span class="lh6">PF DinDisplay Pro</span>
-								</a>
+						<li class="rb rb_sq5 rb_bg">
+							<div class="rb_padding">
+								<iframe width="239" height="146" src="http://www.youtube.com/embed/0QavgMtBxF8" frameborder="0"></iframe>
+								<div class="marker"></div>
+								<span class="rb_cont">Анонс видеопубликации PF DinDisplay Pro Light 12pt tracking 80 interligne 15pt text centred, max: четыре строки, но не более 135 знаков</span>
 							</div>
 						</li>
-						<li class="rb_big rb_grey rb_gal">
-							<img src="nsite/img/_img9.png" alt="_img9" />
-							<div class="img_gal">
-								<img src="nsite/img/_img10.png" alt="_img10" />
-								<img src="nsite/img/_img11.png" alt="_img11" />
-								<img src="nsite/img/_img10.png" alt="_img10" />
+						<li style="top: 250px;" class="rb rb_sq5 rb_bg"><div class="rb_padding"><a href="#"><img src="nsite/img/_img8.png" alt="_img7" /><span class="marker"></span><span class="rb_cont">Анонс видеопубликации PF DinDisplay Pro Light 12pt tracking 80 interligne 15pt text centred, max: четыре строки, но не более 135 знаков</span></a></div></li>
+						<li style="top: 500px;" class="rb rb_sq5 rb_grey rb_ti"><div class="rb_padding"><h1>Накануне годовщины победы в</h1><a href="#"><img src="nsite/img/_img12.png" alt="_img7" /></a></div></li>
+						<li style="top: 750px;" class="rb rb_sq5 rb_grey rb_ti"><div class="rb_padding"><a href="#"><img src="nsite/img/_img12.png" alt="_img7" /></a><h1>Накануне годовщины победы в</h1></div></li>
+						<li style="top: 1000px;" class="rb rb_sq5 rb_ips rb_grey"><div class="rb_padding"><img src="nsite/img/_img5.png" alt="_img5" /><p><strong>Накануне годовщины</strong>победы в сталинградской битве слетал в волгоград. заранее решил выделить время на прогулку по накануне не более 140 знаков</p></div></li>
+						<li style="top: 1250px;" class="rb rb_sq5 rb_bg rb_grey">
+							<div class="rb_padding">
+	              <p class="full_text"><strong>подводная</strong> лодка похожа на женщину своим торпедным люком и склонностью к тайным диверсионным операциям. <strong>обе</strong> могут уйти на дно месяца на два и там существовать в автономном режиме, ведя скрытную военную борьбу. <strong>обе</strong> способны утянуть в непроницаемые глубины десятки мужчин и погубить – или уберечь. <strong>поэтому</strong>, когда женщина отправляется на свою первую подлодку, ей следует быть во всеоружии, как перед встречей с соперницей. К тому же, велик шанс найти там героического мужчину, чьи глаза горят особенно ярко на бледном незагорелом лице, и вызволить его из подводного плена.
+	Но по закону мировой несправедливости, судьбоносные встречи чаще всего происходят в моменты растерянности и наибольшей уязвимости.</p>
 							</div>
-							<div class="clear"></div>
-							<strong>Заголовок публикации max 2 строки, max 50 знаков</strong>
 						</li>
-						
-						<li class="rb_big rb_grey rb_ti"><h1>Накануне годовщины победы в</h1><a href="#"><span class="resize" style="background-image: url(nsite/img/_img12.png);"></span></a></li>
-						<li class="rb_big rb_grey rb_ti"><a href="#"><span class="resize" style="background-image: url(nsite/img/_img12.png);"></span></a><h1>Накануне годовщины победы в</h1></li>
-						<li class="rb_big rb_ips rb_grey">
-							<img src="nsite/img/_img5.png" alt="_img5" />
-							<p><strong>Накануне годовщины</strong>победы в сталинградской битве слетал в волгоград. заранее решил выделить время на прогулку по накануне не более 140 знаков</p>
+						<li style="top: 1300px;" class="rb rb_sq5 rb_p10 rb_grey rb_gal">
+							<div class="rb_padding">
+								<img src="nsite/img/_img9.png" alt="_img9" />
+								<div class="img_gal">
+									<img src="nsite/img/_img10.png" alt="_img10" />
+									<img src="nsite/img/_img11.png" alt="_img11" />
+									<img src="nsite/img/_img10.png" alt="_img10" />
+								</div>
+								<div class="clear"></div>
+								<strong>Заголовок публикации max 2 строки, max 50 знаков</strong>
+							</div>
 						</li>
-						<li class="rb_big rb_bg rb_grey">
-              <p class="full_text"><strong>подводная</strong> лодка похожа на женщину своим торпедным люком и склонностью к тайным диверсионным операциям. <strong>обе</strong> могут уйти на дно месяца на два и там существовать в автономном режиме, ведя скрытную военную борьбу. <strong>обе</strong> способны утянуть в непроницаемые глубины десятки мужчин и погубить – или уберечь. <strong>поэтому</strong>, когда женщина отправляется на свою первую подлодку, ей следует быть во всеоружии, как перед встречей с соперницей. К тому же, велик шанс найти там героического мужчину, чьи глаза горят особенно ярко на бледном незагорелом лице, и вызволить его из подводного плена.
-Но по закону мировой несправедливости, судьбоносные встречи чаще всего происходят в моменты растерянности и наибольшей уязвимости.</p>
+						<li style="top:1550px;" class="rb rb_rec">
+							<div class="rb_padding">
+								<span>НАКАНУНЕ ГОДОВЩИНЫ ПОБЕДЫ В СТАЛИНГРАДСКОЙ БИТВЕ СЛЕТАЛ В ВОЛГОГРАД. ЗАРАНЕЕ РЕШИЛ ВЫДЕЛИТЬ ВРЕМЯ НА ПРОГУЛКУ ПО ГОРОДУ И ДАЖЕ СОСТАВИЛ ДЛЯ СЕБЯ ПЛАН МЕРОПРИЯТИЙ. УДАЛОСЬ НЕ ВСЁ, НО ТЕМ НЕ МЕНЕЕ ПОДЕЛЮСЬ ВПЕЧАТЛЕНИЯМИ ОТ ПРОГУЛОК ПО ГОРОДУ.</span>
+							</div>
 						</li>
-						<li class="rb_big">
-							<span>НАКАНУНЕ ГОДОВЩИНЫ ПОБЕДЫ В СТАЛИНГРАДСКОЙ БИТВЕ СЛЕТАЛ В ВОЛГОГРАД. ЗАРАНЕЕ РЕШИЛ ВЫДЕЛИТЬ ВРЕМЯ НА ПРОГУЛКУ ПО ГОРОДУ И ДАЖЕ СОСТАВИЛ ДЛЯ СЕБЯ ПЛАН МЕРОПРИЯТИЙ. УДАЛОСЬ НЕ ВСЁ, НО ТЕМ НЕ МЕНЕЕ ПОДЕЛЮСЬ ВПЕЧАТЛЕНИЯМИ ОТ ПРОГУЛОК ПО ГОРОДУ.</span>
+						<li style="top: 1675px;" class="rb rb_sq3"><div class="rb_padding"><a href="#"><img src="nsite/img/_img3.png" alt="_img7" /></a></div></li>
+						<li style="top: 1825px;" class="rb rb_sq3 rb_bg"><div class="rb_padding"><a href="#"><img src="nsite/img/_img7.png" alt="_img7" /><span class="rb_cont"><strong>Первая строка</strong>публикации PF DinDisplay Pro Light 11pt не более 75 знаков</span></a></div></li>
+						<li style="top: 1975px;" class="rb rb_sq3 rb_grey rb_bg">
+							<div class="rb_padding">
+								<div class="haos">
+									<a href="#">
+										<strong class="lh3">ПЕРВОЕ </strong>
+										<span class="lh1">предложение </span>
+										<span class="lh3">в публикации </span>
+										<span class="lh5">набранное разным </span>
+										<strong class="lh9">кеглем, </strong>
+										<span class="lh7">отцентрованное </span>
+										<span class="lh7">внутри бокса и </span>
+										<span class="lh1">равным интерлиньяжем </span>
+										<span class="lh6">PF DinDisplay Pro</span>
+									</a>
+								</div>
+							</div>
 						</li>
+						<li style="top: 2125px;" class="rb rb_sq2 rb_bg"><div class="rb_padding"><h1>АРМИЯ<small>простится</small></h1><div class="marker"></div><em><a href="#">с вещмешками</a></em></div></li>
+						<li style="top: 2225px;" class="rb rb_sq2 rb_grey"><div class="rb_padding"><a href="#"><img src="nsite/img/_img4.png" alt="_img7" /><em class="title_bottom">Короткий заголовок не более 40 знаков</em></a></div></li>
 						
 					</ul>
 

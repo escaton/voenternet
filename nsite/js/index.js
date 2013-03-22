@@ -1,6 +1,5 @@
 var Builder = function() {
     return {
-        count: 10,
 
         wrapper: null,
 
@@ -19,52 +18,78 @@ var Builder = function() {
 
         squares: new Array(),
 
-        init: function (wrapper) {
+        init: function (wrapper, generate) {
 
-            this.elements = (function() {
-                var buf = [];
-                blocks = wrapper.children();
-                for (var i=0;i<blocks.length;i++) {
-                    buf.push({elem: blocks.eq(i), params: {x:null, y:null}})
-                    if (blocks.eq(i).hasClass('cblock')) {
-                        buf[i].params.r = blocks.eq(i).hasClass('cb_big') ? 3 : (blocks.eq(i).hasClass('cb_medium') ? 2 : 1)
-                    } else {
-                        buf[i].params.r = blocks.eq(i).hasClass('rb_big') ? 5 : (blocks.eq(i).hasClass('rb_medium') ? 3 : 2)
-                    }
-                }
-                return buf;
-            })();
+            this.count = 30;
 
             // console.log(this.elements)
 
             this.wrapper = wrapper;
 
-            // wrapper.html('');
             this.width = Math.floor(wrapper.width()/50);
 
             for (var i=0;i<this.width;i++) this._map[i] = new Array();
 
-            // this.squares = (function(count) {
-            //     var buf = [],
-            //         i = 0;
+            this.squares = (function(count) {
+                var buf = [],
+                    i = 0;
 
-            //     // create proportional array
-            //     for (i=0;i<count;i++) {
-            //         buf.push({
-            //             type: (i<count/2 ? '0' : (i<count*5/6 ? '1': '2'))
-            //         })
-            //     }
+                // create proportional array
+                for (i=0;i<count;i++) {
+                    buf.push({
+                        type: (i<count/2 ? '0' : (i<count*5/6 ? '1': '2'))
+                    })
+                }
 
-            //     // Randomize array
-            //     for (i = buf.length - 1; i > 0; i--) {
-            //         var j = Math.floor(Math.random() * (i + 1));
-            //         var temp = buf[i];
-            //         buf[i] = buf[j];
-            //         buf[j] = temp;
-            //     }
+                // Randomize array
+                for (i = buf.length - 1; i > 0; i--) {
+                    var j = Math.floor(Math.random() * (i + 1));
+                    var temp = buf[i];
+                    buf[i] = buf[j];
+                    buf[j] = temp;
+                }
 
-            //     return buf;
-            // })(this.count)
+                return buf;
+            })(this.count)
+
+            this.elements = (function(that) {
+                var buf = [];
+
+                if (generate === true) {
+                    for (var i=0;i<that.count;i++) {
+                        switch (that.squares[i].type) {
+                            case '0':
+                                buf.push({
+                                    elem: $('<li class="rb rb_sq2 rb_grey"><div class="rb_padding"><a href="#"><img src="nsite/img/_img4.png" alt="_img7"><em class="title_bottom">Короткий заголовок не более 40 знаков</em></a></div></li>'),
+                                    params: {r: that.types[that.squares[i].type].r}
+                                })
+                                break;
+                            case '1':
+                                buf.push({
+                                    elem: $('<li class="rb rb_sq3 rb_bg"><div class="rb_padding"><a href="#"><img src="nsite/img/_img7.png" alt="_img7"><span class="rb_cont"><strong>Первая строка</strong>публикации PF DinDisplay Pro Light 11pt не более 75 знаков</span></a></div></li>'),
+                                    params: {r: that.types[that.squares[i].type].r}
+                                })
+                                break;
+                            case '2':
+                                buf.push({
+                                    elem: $('<li class="rb rb_sq5 rb_ips rb_grey"><div class="rb_padding"><img src="nsite/img/_img5.png" alt="_img5"><p><strong>Накануне годовщины</strong>победы в сталинградской битве слетал в волгоград. заранее решил выделить время на прогулку по накануне не более 140 знаков</p></div></li>'),
+                                    params: {r: that.types[that.squares[i].type].r}
+                                })
+                                break;
+                        }
+                    }
+                } else {
+                    var blocks = wrapper.children();
+                    for (var i=0;i<blocks.length;i++) {
+                        buf.push({elem: blocks.eq(i), params: {x:null, y:null}})
+                        buf[i].params.r = blocks.eq(i).hasClass('rb_sq3') ? 3 : (blocks.eq(i).hasClass('rb_sq2') ? 2 : 1)
+                    }
+                }
+
+                return buf;
+            })(this);
+
+            wrapper.html('');
         },
 
         check: function (x, y, r) {
@@ -211,7 +236,7 @@ var Builder = function() {
 
             console.log(index)
 
-            this.wrapper.find('.rb_sbig').removeClass('rb_sbig');
+            this.wrapper.find('.rb_sq7').removeClass('rb_sq7');
 
             for (i=0;i<elements.length;i++) {
                 elements[i].params.r = elements[i].init_params.r;
@@ -222,7 +247,7 @@ var Builder = function() {
             if (elem.params.x>this.width-7) elem.params.x = this.width-7;
             elem.params.r = 7;
             this.set(elem.params.x, elem.params.y, elem.params.r, elem)
-            elem.elem.addClass('rb_sbig');
+            elem.elem.addClass('rb_sq7');
 
 
             this.height = Infinity;
@@ -239,7 +264,7 @@ var Builder = function() {
             this.height = this.getHeight();
             this.wrapper.height((this.height)*50);
 
-            while (this.allTop() || this.allLeft()) {}
+            this.allTop()
 
             this.height = this.getHeight();
             this.wrapper.height((this.height)*50);
@@ -256,9 +281,10 @@ var Builder = function() {
             return h;
         },
 
-        build: function (wrapper) {
+        build: function (wrapper, generate) {
 
-            this.init(wrapper);
+            this.init(wrapper, generate);
+
             var x=0,y=0,max=0,
                 i=0,j=0,
                 temp,type,
@@ -274,6 +300,7 @@ var Builder = function() {
                 this.set(temp.x, temp.y, elements[i].params.r, elements[i]);
                 elements[i].elem
                     .css({top:temp.y*50,left:temp.x*50})
+                    .appendTo(this.wrapper);
             }
 
             // сохраняем начальное положение
@@ -296,20 +323,19 @@ $(function() {
 
     $('.m_block').hide();
     $('.r_block').css({width:'740px'});
-    $('.rb_blocks').css({width: 'auto'})
-    $('.rb_blocks').css({'margin-right': '-5px'})
+    $('.r_block .rb_blocks').css({width: 'auto'})
+    $('.r_block .rb_blocks').css({'margin-right': '-5px'})
 
-    $('.rb_blocks').append($('.rb_blocks').children().clone());
 
     cBlocks = new Builder(),
-        rBlocks = new Builder();
+    rBlocks = new Builder();
 
-    cBlocks.build($('.cblocks'))
-    rBlocks.build($('.rb_blocks'))
+    cBlocks.build($('.l_block .rb_blocks'))
+    rBlocks.build($('.r_block .rb_blocks'), true)
 
-    $('.rb_blocks li')
+    $('.r_block .rb_blocks li')
         .click(function() {
-            rBlocks.open($('.rb_blocks li').index(this))
+            rBlocks.open($('.r_block .rb_blocks li').index(this))
             return false;
         })
 })

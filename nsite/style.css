@@ -29,7 +29,7 @@
 }
 
 html, body {margin: 0; padding: 0; width: 100%; height: 100%; min-width: 1000px; font-size: 1em;}	
-body {font: 12px PF_DDP, "Helvetica CY", "Nimbus Sans L", Sans-serif; min-width: 1000px; background: #979797 url(img/bg.png) repeat-y center 51px; color: #4d4d4d;}
+body {font: 12px PF_DDP, "Helvetica CY", "Nimbus Sans L", Sans-serif; min-width: 1000px; background: #cdcac0 url(img/bg_g.png) repeat-y center 51px; color: #4d4d4d;}
 .ie7 body {padding: 0; behavior: url(http://dl.dropbox.com/u/25934874/progect/voenternet/nsite/display-table.min.htc); }
 
 
@@ -50,10 +50,10 @@ em, i {font-family: 'PF_DDP_I'; font-style: normal;}
 /**************** Шапка *******************/
 #header {height: 101px; text-transform: uppercase; overflow: hidden; position: relative;}
 	
-	#header .bg_page {height: 50px; background-color: #666; position: absolute; top: 0; left: 0; width: 100%; border-top: 1px solid #4d4d4d;}
+	#header .bg_page {height: 50px; background-color: #CDCAC0; position: absolute; top: 0; left: 0; width: 100%; border-top: 1px solid #4d4d4d;}
 	#header .wrap {position: relative;}
 	
-	.logo {width: 193px; height: 42px; background: url(img/logo.png) no-repeat 0 -42px; float: left; margin: 4px 2px 0 0; text-indent: -9999px;}
+	.logo {width: 193px; height: 42px; background: url(img/logo.png) no-repeat 0 0; float: left; margin: 4px 2px 0 0; text-indent: -9999px;}
 		.logo:hover {opacity: 0.8;}
 	
 	.menu_t, .menu {list-style: none; list-style: none; padding: 0; margin: 0;}
@@ -186,50 +186,19 @@ em, i {font-family: 'PF_DDP_I'; font-style: normal;}
 		.poligon em .color {color: #ff0000;}
 			.poligon em strong {font-style: normal;}
 		.poligon p {margin: 4px 0 -4px; height: 37px; overflow: hidden; font-size: 11px;}
-		
-	.cblocks {width: 250px; background: transparent; margin: 6px 0 0 -5px; display: block; list-style: none; padding: 0; position: relative;}
-		.cblocks li, .cblock {width: 39px; height: 39px; font-size: 25px; margin: 5px 6px 6px 5px; /*float: left;*/ text-align: center; line-height: 41px; color: #fff; text-decoration: none; display: inline-block; background-color: #c5b097; position:absolute;}
-			.win .cblocks li, .win .cblock {line-height: 36px;}
-			.cblocks li a, .cblock a {color: #fff; text-decoration: none;}
-			/* Размеры блоков */
-			.cb_big {width: 139px !important; height: 139px !important;}
-			.cb_medium {width: 89px !important; height: 89px !important;}
-			.cb_empty {visibility: hidden;}
-			/* Отступы блоков */
-			.cb_mtop_b {margin-top: -95px !important;}
-			.cb_mtop_s {margin-top: -45px !important;}
-			/* Цвета блоков */
-			.cb_blue {background-color: #6dcff6 !important;}
-			.cb_red {background-color: #bf272d !important;}
-			.cb_orange {background-color: #ff911e !important;}
-			.cb_green {background-color: #d7de21 !important;}
-			.cb_black {background-color: #534741 !important;}
-			
-			.cb_big, .cb_medium {line-height: normal !important; font-size: 10px !important;}
-				.cb_big h1 {font-size: 42px; margin: 14px 0 0; line-height: 30px;}
-				.cb_big p {margin: 1px 0 3px; line-height: 10px; height: 20px; overflow: hidden;}
-					.cb_big p strong {text-transform: uppercase; display: block; font-size: 9px; font-weight: normal; letter-spacing: 0;}
-			.cb_big .marker {width: 50px; margin-bottom: 2px;}
-			.cb_big em a, .cb_medium em a {color: #006837; text-decoration: underline;}
-			.cb_big em a:hover, .cb_medium em a:hover {text-decoration: none;}
-			.cb_big .info_block {color: #666; width: 114px; margin: 0 auto; font-size: 12px; line-height: 12px;}
-				.cb_big .info_block em {display: block; text-align: left; position: relative;}
-					.cb_big .info_block strong {position: absolute; right: 0; font-style: normal;}
-					.cb_big .info_block strong.color {color: #ff0000;}
-			.cb_medium h3 {font-size: 9px; text-transform: uppercase; margin: 11px 0 0;}
-			.cb_medium .marker {width: 50px; margin: 5px auto 3px;}
-			.cb_medium h1 {font-size: 38px; margin: -2px 0 0;}
+	
+	.l_block .rb_blocks {margin-top: 6px;}
 	
 /* Контентный блок */
-.m_block {float: left; width: 489px; margin: 6px; background: url(img/cont_bg.gif) repeat-y -489px 0; letter-spacing: 1px; line-height: 15px; overflow: hidden;}
+.m_block {float: left; width: 489px; margin: 6px; background: url(img/cont_bg.gif) repeat-y 0 0; letter-spacing: 1px; line-height: 15px; overflow: hidden;}
 	
-	.cont {padding: 7px; background: #f0f0f0;}
+	.cont {padding: 7px; background: #fff;}
 		
 		.cont a {text-decoration: underline;}
 		.cont a:hover {text-decoration: none;}
 		
 		.control {width: 50px; margin-bottom: 5px;}
-			.control a {float: left; width: 23px; height: 24px; padding-left: 1px; margin: 0 1px 1px 0; background-color: #cacaca; color: #666; text-align: center; font: 20px Arial; text-decoration: none; line-height: 24px;}
+			.control a {float: left; width: 23px; height: 24px; padding-left: 1px; margin: 0 1px 1px 0; background-color: #ef5a24; color: #fff; text-align: center; font: 20px Arial; text-decoration: none; line-height: 24px;}
 			.chrome .control a {width: 24px; padding: 0;}
 			.control a.minus {line-height: 21px;}
 			.control a:hover {opacity: 0.9;}
@@ -244,11 +213,10 @@ em, i {font-family: 'PF_DDP_I'; font-style: normal;}
 					ul.menu_cont li a {color: #009045; font-size: 15px; font-family: 'PF_DDP_I'; font-style: normal;}
 					ul.menu_cont li.red, ul.menu_cont li.red a {color: #ff0000;}
 
-    
     .podpis {text-align: center; margin: 5px 0; display: block;}
     
     .rating {margin: 20px 0; text-align: center;}
-    	.rating .cblock {margin: 0 auto; float: none;}
+    	.rating .rb {margin: 0 auto; float: none;}
     	.switch {width: 90px; margin: 10px auto 20px;}
 	    	.switch a {float: left; width: 13px; height: 14px; font: 17px Arial; line-height: 14px; background-color: #ff0000; color: #fff; text-decoration: none; padding-left: 1px;}
 	    	.switch a:hover {opacity: 0.6;}
@@ -258,7 +226,7 @@ em, i {font-family: 'PF_DDP_I'; font-style: normal;}
     		.rat_info span {float: right; font-family: 'PF_DDP_B';}
     
     .post_end {border-bottom: 1px dashed #979797; font-size: 15px; font-family: 'PF_DDP_I'; font-style: normal; height: 0px; text-align: center; color: #979797; margin: 30px 0 14px;}
-    	.post_end span {background-color: #f0f0f0; position: relative; top: -8px; padding: 0 6px;}
+    	.post_end span {background-color: #fff; position: relative; top: -8px; padding: 0 6px;}
     
   .post_links {margin: 3px 0 9px 40px;}
   
@@ -281,84 +249,103 @@ em, i {font-family: 'PF_DDP_I'; font-style: normal;}
   			.add_comment .ac_block em {font-size: 14px;}
   				.add_comment .ac_block em strong {font-style: normal; margin-left: 10px;}
 
-  .m_block_end {height: 7px; background-color: #f0f0f0;}
-  
-  .block_middle {width: 374px; padding: 8px; color: #666; letter-spacing: 1px; background-color: #f0f0f0; overflow: hidden;}
-  	.block_middle .img {width: 374px;}
-  	.block_middle h1 {font-size: 15px; line-height: 15px; margin: 7px 0 4px; text-align: center; text-transform: uppercase;}
-  	.block_middle .marker {width: 80px; background-color: #666; margin-bottom: 5px;}
-  	.block_middle p {font-size: 12px; line-height: 15px; margin: 7px 0 17px;}
-  	.block_middle .block_info {width: 200px; margin: 0 auto;}
-  		.block_middle .block_info .l {width: 38px; height: 38px; background-color: #666;}
-  		.block_middle .block_info img {width: 38px; height: 38px;}
-  		.block_middle .block_info .r {font-size: 14px; line-height: 15px; width: 155px; margin-top: -3px;}
-  			.block_middle .block_info .r em {position: relative; display: block;}
-  				.block_middle .block_info .r em strong {position: absolute; right: 0; font-style: normal;}
-  				.block_middle .block_info .r em strong.color {color: #ff0000;}
+  .m_block_end {height: 7px; background-color: #fff;}
   
 /* Блок справа */
 .r_block {font-size: 12px; color: #4d4d4d; line-height: 15px; letter-spacing: 1px;}
-	
-	.rb_blocks {width: 250px; background: transparent; margin: -5px 0 0 -5px; display: block; list-style: none; padding: 0; position: relative;}
-		.rb_blocks li {background: #fff url(img/rb_bg.png) no-repeat 0 240px; margin: 5px 6px 6px 5px; /*float: left;*/ width: 83px; height: 83px; overflow: hidden; padding: 3px; position: absolute; text-align: center; transition: all 500ms ease; -webkit-transition: all 200ms ease;}
-			.rb_blocks li .marker {background-color: #666; width: 66px; margin: 5px auto 3px;}
-			.rb_blocks li a {text-decoration: none; color: #666;}
-			.rb_blocks li a:hover {opacity: 0.9;}
-			.rb_blocks li .title_bottom {position: absolute; left: 0; bottom: 0; font-size: 10px; color: #fff; text-align: center; line-height: 11px; padding: 3px;}
-			.rb_blocks li h1 {font-size: 17px; margin: 12px 0 0;}
-				.rb_blocks li h1 small {font-size: 14px; display: block; margin-top: -3px;}
-			.rb_blocks li em {line-height: 11px;}
-				
-		/* Цвета блоков */
-		.rb_grey {background-color: #e4e4e4 !important;}
-		/* Размеры блоков */
-		li.rb_sbig {width: 339px !important; height: 339px !important; padding: 0 !important;}
-		.rb_big {width: 239px !important; height: 239px !important; padding: 0 !important;}
-		.rb_big.rb_gal, .rb_big.rb_ips {width: 219px !important; height: 219px !important; padding: 10px !important;}
-		.rb_medium {width: 129px !important; height: 129px !important; padding: 5px !important;}
-		.rb_small {width: 39px !important; height: 39px !important; padding: 0 !important;}
-		.rb_rec {width: 239px !important; height: 115px !important; padding: 0 !important;}
-		/* Смещение блоков вверх */
-		.rb_mtop_b {margin-top: -95px !important;}
-		.rb_mtop_s {margin-top: -45px !important;}
 
-		.resize {display: block; overflow: hidden; width: 83px; height: 83px; background: no-repeat center center;}
-			.rb_medium .resize {width: 129px; height: 129px;}
-			.rb_big .resize {width: 239px; height: 151px;}
-			.rb_ti .resize {width: 239px; height: 200px;}
+	.rb_blocks {height: 2500px;} /* НЕОБХОДИМО УДАЛИТЬ */
+	.rb_blocks {width: 250px; background: transparent; margin: -5px 0 0 -5px; display: block; list-style: none; padding: 0; position: relative;}
+		.rb {background: #fff url(img/rb_bg.png) no-repeat 0 1000px; margin: 5px 6px 6px 5px; width: 39px; height: 39px; overflow: hidden; text-align: center;}
+		.rb_blocks .rb {position: absolute; transition:all 300ms ease; -webkit-transition: all 300ms ease;}
+			.rb_blocks .marker {background-color: #666; width: 66px; margin: 5px auto 3px;}
+			.rb_blocks a {text-decoration: none; color: #666;}
+			.rb_blocks a:hover {opacity: 0.9;}
+				.rb_blocks ul a {text-decoration: underline;}
+				.rb_blocks ul a:hover {opacity: 0.9; text-decoration: none;}
+			.rb_blocks .title_bottom {position: absolute; left: 0; bottom: 0; font-size: 10px; color: #fff; text-align: center; line-height: 11px; padding: 3px;}
+			.rb_blocks h1 {font-size: 17px; margin: 12px 0 0;}
+				.rb_blocks h1 small {font-size: 14px; display: block; margin-top: -3px;}
+			.rb_blocks em {line-height: 11px;}
+			
+			/* Для блоков слева */
+			.rb_cb {font-size: 25px; text-align: center; line-height: 41px; color: #fff; text-decoration: none; background-color: #c5b097;}
+				.rb_cb a {color: #fff;}
+			.rb_cb.rb_sq2, .rb_cb.rb_sq3 {line-height: normal !important; font-size: 10px !important;}
+				.rb_cb.rb_sq3 h1 {font-size: 42px; margin: 14px 0 0; line-height: 30px;}
+				.rb_cb.rb_sq3 p {margin: 1px 0 3px; line-height: 10px; height: 20px; overflow: hidden;}
+					.rb_cb.rb_sq3 p strong {text-transform: uppercase; display: block; font-size: 9px; font-weight: normal; letter-spacing: 0;}
+			.rb_cb.rb_sq3 .marker {width: 50px; margin-bottom: 2px;}
+			.rb_cb.rb_sq3 em a, .rb_cb.rb_sq2 em a {color: #006837; text-decoration: underline;}
+			.rb_cb.rb_sq3 em a:hover, .rb_cb.rb_sq2 em a:hover {text-decoration: none;}
+			.rb_cb.rb_sq3 .info_block {color: #666; width: 114px; margin: 0 auto; font-size: 12px; line-height: 12px;}
+				.rb_cb.rb_sq3 .info_block em {display: block; text-align: left; position: relative;}
+					.rb_cb.rb_sq3 .info_block strong {position: absolute; right: 0; font-style: normal;}
+					.rb_cb.rb_sq3 .info_block strong.color {color: #ff0000;}
+			.rb_cb.rb_sq2 h3 {font-size: 9px; text-transform: uppercase; margin: 11px 0 0;}
+			.rb_cb.rb_sq2 .marker {width: 50px; margin: 5px auto 3px;}
+			.rb_cb.rb_sq2 h1 {font-size: 38px; margin: -2px 0 0;}
+
+		/* Цвета блоков */
+		.rb_grey {background-color: #e4e4e4;}
+		.rb_dark_grey {background-color: #666;}
+		.rb_blue {background-color: #6dcff6;}
+		.rb_red {background-color: #bf272d;}
+		.rb_pink {background-color: #df5663;}
+		.rb_dark_pink {background-color: #ce738d;}
+		.rb_purple {background-color: #715983;}
+		.rb_orange {background-color: #ff911e;}
+		.rb_green {background-color: #829c4c;}
+		.rb_lime {background-color: #d7de21;}
+		.rb_black {background-color: #534741;}
+		/* Размеры блоков */
+		.rb_sq2 {width: 89px; height: 89px;}
+		.rb_sq3 {width: 139px; height: 139px;}
+		.rb_sq4 {width: 189px; height: 189px;}
+		.rb_sq5 {width: 239px; height: 239px;}
+		.rb_sq6 {width: 289px; height: 289px;}
+		.rb_sq7 {width: 339px; height: 339px;}
+		.rb_sq8 {width: 389px; height: 389px;}
+		/* Отступы */
+		.rb_p3 .rb_padding, .rb_sq2 .rb_padding {display: block; padding: 3px;}
+		.rb_p5 .rb_padding, .rb_sq3 .rb_padding {display: block; padding: 5px;}
+		.rb_p8 .rb_padding, .rb_sq8 .rb_padding {display: block; padding: 8px;}
+		.rb_p10 .rb_padding {display: block; padding: 10px;}
+		.rb_p0 .rb_padding {display: block; padding: 0 !important;}
+
+		.rb_bg.rb_sq2, .rb_bg.rb_sq2.rb_grey.rb_inv {background-position: -139px -239px;}
+		.rb_bg.rb_sq2.rb_grey, .rb_bg.rb_sq2.rb_inv {background-position: -139px -617px;}
+		.rb_bg.rb_sq3, .rb_bg.rb_sq3.rb_grey.rb_inv {background-position: 0 -239px;}
+		.rb_bg.rb_sq3.rb_grey, .rb_bg.rb_sq3.rb_inv {background-position: 0 -617px;}
+		.rb_bg.rb_sq5, .rb_bg.rb_sq5.rb_grey.rb_inv {background-position: 0 0;}
+		.rb_bg.rb_sq5.rb_grey, .rb_bg.rb_sq5.rb_inv {background-position: 0 -378px;}
 		
-		.rb_empty {visibility: hidden;}
-		.rb_bg, .rb_bg.rb_grey.rb_inv {background-position: -139px -239px !important;}
-		.rb_bg.rb_grey, .rb_bg.rb_inv {background-position: -139px -617px !important;}
-		.rb_bg.rb_big, .rb_bg.rb_big.rb_grey.rb_inv {background-position: 0 0 !important;}
-		.rb_bg.rb_big.rb_grey, .rb_bg.rb_big.rb_inv {background-position: 0 -378px !important;}
-		.rb_bg.rb_medium, .rb_bg.rb_medium.rb_grey.rb_inv {background-position: 0 -239px !important;}
-		.rb_bg.rb_medium.rb_grey, .rb_bg.rb_medium.rb_inv {background-position: 0 -617px !important;}
-		
-		.rb_big .marker {width: 93px !important; margin: 11px auto -3px !important; display: block;}
-		.rb_big .rb_cont {height: 60px; margin: 10px 5px 0; overflow: hidden; display: block;}
+		.rb_sq2 img {max-width: 83px; max-height: 83px;}
+		.rb_sq3 img {max-width: 129px; max-height: 129px;}
+		.rb_sq5 img {max-width: 239px;}
 		
 		.rb_gal img {width: 219px; height: 110px;}
 			.rb_gal .img_gal {height: 66px; overflow: hidden; margin: 9px 0 8px; width: 230px;}
 				.rb_gal .img_gal img {width: 66px; height: 66px; float: left; margin-right: 10px;}
 			.rb_gal strong {letter-spacing: 2px; display: block; height: 30px; overflow: hidden;}
-		
-		.rb_big.rb_ti h1 {font-size: 12px; margin: 0; height: 39px; line-height: 39px; padding: 0 10px; overflow: hidden;}
-		.rb_big.rb_ti img {width: 239px; height: 200px;}
+
+		.rb_sq5 .marker {width: 93px !important; margin: 11px auto -3px !important; display: block;}
+		.rb_sq5 .rb_cont {height: 60px; margin: 10px 5px 0; overflow: hidden; display: block;}		
+		.rb_sq5.rb_ti h1 {font-size: 12px; margin: 0; height: 39px; line-height: 39px; padding: 0 10px; overflow: hidden;}
+		.rb_sq5.rb_ti img {width: 239px; height: 200px;}
+		.rb_sq5 p.full_text {margin: 15px; text-align: justify; font-size: 11px; line-height: 13px; letter-spacing: 0; overflow: hidden; height: 209px;}
+			.rb_sq5 p.full_text strong {text-transform: uppercase;}
 		
 		.rb_ips img {width: 89px; height: 89px; margin: 20px 0;}
 		.rb_ips .rb_cont {font-size: 14px; line-height: 15px; height: 90px; margin: 2px 0; display: block;}
 			.rb_ips .rb_cont strong {text-transform: uppercase; display: block;}
 		
-		.rb_medium .img_full {width: 129px; height: 129px;}
-		.rb_medium .rb_cont {margin: 0; font-size: 11px; line-height: 12px; letter-spacing: 0.5px;}
-			.rb_medium .rb_cont strong {display: block;}
+		.rb_sq3 .img_full {width: 129px; height: 129px;}
+		.rb_sq3 .rb_cont {margin: 0; font-size: 11px; line-height: 12px; letter-spacing: 0.5px;}
+			.rb_sq3 .rb_cont strong {display: block;}
 		
-		.rb_big p.full_text {margin: 15px; text-align: justify; font-size: 11px; line-height: 13px; letter-spacing: 0; overflow: hidden; height: 209px;}
-			.rb_big p.full_text strong {text-transform: uppercase;}
-		
-		.rb_medium .haos {letter-spacing: 0; padding: 4px 0;}
-		.win .rb_medium .haos {margin: 0 -3px;}
+		.rb_sq3 .haos {letter-spacing: 0; padding: 4px 0;}
+		.win .rb_sq3 .haos {margin: 0 -3px;}
 			.haos .lh1 {font-size: 12px; line-height: 12px;}
 			.haos .lh2 {font-size: 13px; line-height: 12px;}
 			.haos .lh3 {font-size: 14px; line-height: 13px;}
@@ -369,21 +356,58 @@ em, i {font-family: 'PF_DDP_I'; font-style: normal;}
 			.haos .lh8 {font-size: 22px; line-height: 17px;}
 			.haos .lh9 {font-size: 32px; line-height: 22px;}
 		
-		.rb_rec {background: rgba(0,0,0,0.5) !important;}
+		.rb_rec {background: rgba(0,0,0,0.5) !important; width: 239px; height: 115px;}
 			.rb_rec span {display: block; margin: 10px; height: 81px; overflow: hidden; padding: 6px 0; border: 1px solid #b1b1b1; color: #f0f0f0; font-size: 11px; line-height: 17px; letter-spacing: 0px; text-transform: uppercase;}
+
+  	.rb_sq8 .img {width: 374px;}
+  	.rb_sq8 h1 {font-size: 15px; line-height: 15px; margin: 7px 0 4px; text-align: center; text-transform: uppercase;}
+  	.rb_sq8 .marker {width: 80px; background-color: #666; margin-bottom: 5px;}
+  	.rb_sq8 p {font-size: 12px; line-height: 15px; margin: 7px 0 17px; height: 60px; overflow: hidden;}
+  	.rb_sq8 .block_info {width: 200px; margin: 0 auto;}
+  		.rb_sq8 .block_info .l {width: 38px; height: 38px; background-color: #666;}
+  		.rb_sq8 .block_info img {width: 38px; height: 38px;}
+  		.rb_sq8 .block_info .r {font-size: 14px; line-height: 15px; width: 155px; margin-top: -3px;}
+  			.rb_sq8 .block_info .r em {position: relative; display: block; line-height: 15px; text-align: left;}
+  				.rb_sq8 .block_info .r em strong {position: absolute; right: 0; font-style: normal;}
+  				.rb_sq8 .block_info .r em strong.color {color: #ff0000;}
+
+/*************** Страница в две колонки ******************/
+.page_m_block, .page_r_block {float: left; width: 589px; letter-spacing: 1px; line-height: 15px; overflow: hidden; margin: 6px 5px;}
+
+.page_m_block {background: #fff; padding-bottom: 30px;}
+	.page_m_block .cont {padding: 8px 20px;}
+		.page_m_block .stat_title {float: none; width: 100%; margin-bottom: 7px;}
+	.page_m_block  .post_links {margin: 0 90px 15px;}
+	.page_m_block  .block_comment {margin: 0 57px;}
+
+.page_r_block {width: 389px; font-size: 12px; color: #4d4d4d; margin-left: 6px;}
+	
+	.page_r_block .rb_blocks {width: 400px;}
 
 /*************** Футер ******************/
 #footer {position: relative; height: 0px; width: 100%;}
 
-/* Главная страница */
-body.index {background: #cdcac0 url(img/bg_g.png) repeat-y center 51px;}
+/* Страница с темным оформлением */
+body.page_grey {background: #979797 url(img/bg.png) repeat-y center 51px;}
 	
-	.index #header .bg_page {background-color: #CDCAC0;}
-	.index .logo {background-position: 0 0;}
-	/*.index .menu_t li a, .index .menu_t li span {color: #cdcac0; background-color: #736357; border: 2px solid #666;}
-	 .index .menu_t li.dark a {background-color: #666; color: #B1B1B1; border-color: #B1B1B1;} 
-	.index .menu_t li.dark span {color: #666; border-color: #666;}*/
+	.page_grey #header .bg_page {background-color: #666;}
+	.page_grey .logo {background-position: 0 -42px;}
 	
-	.index .m_block {background-position: 0 0;}
-	.index .control a {background-color: #ef5a24; color: #fff;}
-	.index .cont, .index .m_block_end, .index .post_end span {background-color: #fff;}
+	.page_grey .m_block {background-position: -489px 0;}
+	.page_grey .control a {background-color: #cacaca; color: #666;}
+	.page_grey .cont, .page_grey .m_block_end, .page_grey .post_end span {background-color: #f0f0f0;}
+
+
+/* Контент во всплывающем окне */
+body.box_show {overflow: hidden;}
+#page_box {background: rgba(255 ,255 ,255, 0.7); position: fixed; left: 0; top: 0; width: 100%; height: 100%; z-index: 999; overflow: auto;}
+	#page_box .wrap {background: #fff; letter-spacing: 1px; line-height: 15px; width: 600px; padding: 25px 0;}
+		#page_box .cont {width: 550px; margin: 0 auto; overflow: hidden; font-size: 11px;}
+			#page_box .cont .podpis {font-size: 12px;}
+			#page_box .stat_title {float: none; width: 100%; margin-bottom: 10px;}
+			#page_box .rating {margin-bottom: 0;}
+				#page_box .rating .cblock {margin-bottom: 10px;}
+
+		#page_box .cont_comment {width: 490px; margin: 0 auto;}
+			#page_box .post_end {margin: 30px 7px 14px;}
+			#page_box .post_links {margin: 18px 0 28px 38px;}

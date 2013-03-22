@@ -299,6 +299,8 @@ $(function() {
     $('.rb_blocks').css({width: 'auto'})
     $('.rb_blocks').css({'margin-right': '-5px'})
 
+    $('.rb_blocks').append($('.rb_blocks').children().clone());
+
     cBlocks = new Builder(),
         rBlocks = new Builder();
 

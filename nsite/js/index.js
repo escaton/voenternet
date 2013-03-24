@@ -20,7 +20,7 @@ var Builder = function() {
 
         init: function (wrapper, generate) {
 
-            this.count = 30;
+            this.count = postList.length;
 
             // console.log(this.elements)
 
@@ -53,30 +53,21 @@ var Builder = function() {
             })(this.count)
 
             this.elements = (function(that) {
-                var buf = [];
+                var buf = [],
+                    elem,type;
 
-                if (generate === true) {
+                if (generate !== undefined) {
                     for (var i=0;i<that.count;i++) {
-                        switch (that.squares[i].type) {
-                            case '0':
-                                buf.push({
-                                    elem: $('<li class="rb rb_sq2 rb_grey"><div class="rb_padding"><a href="#"><img src="nsite/img/_img4.png" alt="_img7"><em class="title_bottom">Короткий заголовок не более 40 знаков</em></a></div></li>'),
-                                    params: {r: that.types[that.squares[i].type].r}
-                                })
-                                break;
-                            case '1':
-                                buf.push({
-                                    elem: $('<li class="rb rb_sq3 rb_bg"><div class="rb_padding"><a href="#"><img src="nsite/img/_img7.png" alt="_img7"><span class="rb_cont"><strong>Первая строка</strong>публикации PF DinDisplay Pro Light 11pt не более 75 знаков</span></a></div></li>'),
-                                    params: {r: that.types[that.squares[i].type].r}
-                                })
-                                break;
-                            case '2':
-                                buf.push({
-                                    elem: $('<li class="rb rb_sq5 rb_ips rb_grey"><div class="rb_padding"><img src="nsite/img/_img5.png" alt="_img5"><p><strong>Накануне годовщины</strong>победы в сталинградской битве слетал в волгоград. заранее решил выделить время на прогулку по накануне не более 140 знаков</p></div></li>'),
-                                    params: {r: that.types[that.squares[i].type].r}
-                                })
-                                break;
-                        }
+                        type = generate[that.squares[i].type];
+                        elem = type.content[Math.floor(Math.random() * type.content.length)].html;
+                        elem = elem
+                            .replace(/##IMG##/g, 'http://ipraaf.t.voenternet.ru/thumb/'+postList[i].id+'_max.png')
+                            .replace(/##TITLE##/g, postList[i].title)
+                            .replace(/##TXT##/g, postList[i].text[0].substr(0,type.size*15)+'...')
+                        buf.push({
+                            elem: $(elem),
+                            params: {x:null, y:null, r: type.size}
+                        })
                     }
                 } else {
                     var blocks = wrapper.children();
@@ -319,6 +310,7 @@ var Builder = function() {
     }
 }
 
+
 $(function() {
 
     $('.m_block').hide();
@@ -331,7 +323,51 @@ $(function() {
     rBlocks = new Builder();
 
     cBlocks.build($('.l_block .rb_blocks'))
-    rBlocks.build($('.r_block .rb_blocks'), true)
+    rBlocks.build($('.r_block .rb_blocks'), [
+        {
+            size: 2,
+            content: [
+                {
+                    thumb: false,
+                    html: '<li class="rb rb_sq2 rb_grey" style="top: 2225px;"><div class="rb_padding"><a href="#"><img alt="_img7" src="##IMG##"><em class="title_bottom">##TXT##</em></a></div></li>'
+                }
+            ]
+        },
+        {
+            size: 3,
+            content: [
+                {
+                    thumb: false,
+                    html: '<li class="rb rb_sq3 rb_bg" style="top: 1825px;"><div class="rb_padding"><a href="#"><img alt="_img7" src="##IMG##"><span class="rb_cont"><strong>##TITLE##</strong>##TXT##</span></a></div></li>'
+                },
+                {
+                    thumb: true,
+                    html: '<li class="rb rb_sq3" style="top: 1675px;"><div class="rb_padding"><a href="#"><img alt="_img7" src="##IMG##"></a></div></li>'
+                }
+            ]
+        },
+        {
+            size: 5,
+            content: [
+                {
+                    thumb: false,
+                    html: '<li class="rb rb_sq5 rb_ips rb_grey" style="top: 1000px;"><div class="rb_padding"><img alt="_img5" src="##IMG##"><p><strong>##TITLE##</strong>##TXT##</p></div></li>'
+                },
+                {
+                    thumb: true,
+                    html: '<li class="rb rb_sq5 rb_grey rb_ti" style="top: 500px;"><div class="rb_padding"><h1>##TITLE##</h1><a href="#"><img alt="_img7" src="##IMG##"></a></div></li>'
+                },
+                {
+                    thumb: true,
+                    html: '<li class="rb rb_sq5 rb_grey rb_ti" style="top: 750px;"><div class="rb_padding"><a href="#"><img alt="_img7" src="##IMG##"></a><h1>##TITLE##</h1></div></li>'
+                },
+                {
+                    thumb: true,
+                    html: '<li class="rb rb_sq5 rb_bg" style="top: 250px;"><div class="rb_padding"><a href="#"><img alt="_img7" src="##IMG##"><span class="marker"></span><span class="rb_cont">##TXT##</span></a></div></li>'
+                }
+            ]
+        }
+    ])
 
     $('.r_block .rb_blocks li')
         .click(function() {

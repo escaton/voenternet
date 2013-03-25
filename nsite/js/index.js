@@ -18,13 +18,11 @@ var Builder = function() {
 
         squares: new Array(),
 
-        init: function (wrapper, generate) {
+        init: function (wrapper, generate, preview) {
 
             this.count = postList.length;
-
-            // console.log(this.elements)
-
             this.wrapper = wrapper;
+            this.preview = preview;
 
             this.width = Math.floor(wrapper.width()/50);
 
@@ -54,7 +52,8 @@ var Builder = function() {
 
             this.elements = (function(that) {
                 var buf = [],
-                    elem,size,type;
+                    elem,prevHTML,
+                    size,type;
 
                 if (generate !== undefined) {
                     for (var i=0;i<that.count;i++) {
@@ -65,8 +64,14 @@ var Builder = function() {
                             .replace(/##IMG##/g, 'http://ipraaf.t.voenternet.ru/thumb/'+postList[i].id+'_'+type.thumb+'.png')
                             .replace(/##TITLE##/g, postList[i].title)
                             .replace(/##TXT##/g, postList[i].text[0].substr(0,size.size*15)+'...')
+
+                        prevHTML = that.preview.html
+                            .replace(/##IMG##/g, 'http://ipraaf.t.voenternet.ru/thumb/'+postList[i].id+'_'+that.preview.thumb+'.png')
+                            .replace(/##TITLE##/g, postList[i].title)
+                            .replace(/##TXT##/g, postList[i].text[0])
+
                         buf.push({
-                            elem: $(elem),
+                            elem: $(elem).append($(prevHTML)),
                             params: {x:null, y:null, r: size.size}
                         })
                     }
@@ -221,14 +226,29 @@ var Builder = function() {
         },
 
         open: function (index) {
+
+
             var elements = this.elements,
                 elem = elements[index],
                 i,
                 temp;
 
-            console.log(index)
 
-            this.wrapper.find('.rb_sq7').removeClass('rb_sq7');
+            this.wrapper
+                .find('.rb_sq8 .rb_padding')
+                .show(0);
+
+            this.wrapper
+                .find('.rb_sq8 .preview')
+                .hide(0)
+
+            this.wrapper
+                .find('.rb_sq8')
+                .removeClass('rb_sq8')
+
+            elem.elem.find('.rb_padding').hide(0);
+            elem.elem.find('.preview').show(0);
+
 
             for (i=0;i<elements.length;i++) {
                 elements[i].params.r = elements[i].init_params.r;
@@ -236,10 +256,10 @@ var Builder = function() {
 
             for (i=0;i<this.width;i++) this._map[i] = new Array();
 
-            if (elem.params.x>this.width-7) elem.params.x = this.width-7;
-            elem.params.r = 7;
+            if (elem.params.x>this.width-8) elem.params.x = this.width-8;
+            elem.params.r = 8;
             this.set(elem.params.x, elem.params.y, elem.params.r, elem)
-            elem.elem.addClass('rb_sq7');
+            elem.elem.addClass('rb_sq8');
 
 
             this.height = Infinity;
@@ -273,9 +293,9 @@ var Builder = function() {
             return h;
         },
 
-        build: function (wrapper, generate) {
+        build: function (wrapper, generate, preview) {
 
-            this.init(wrapper, generate);
+            this.init(wrapper, generate, preview);
 
             var x=0,y=0,max=0,
                 i=0,j=0,
@@ -338,11 +358,11 @@ $(function() {
             size: 3,
             content: [
                 {
-                    thumb: 'med',
+                    thumb: 'min',
                     html: '<li class="rb rb_sq3 rb_bg" style="top: 1825px;"><div class="rb_padding"><a href="#"><img alt="_img7" src="##IMG##"><span class="rb_cont"><strong>##TITLE##</strong>##TXT##</span></a></div></li>'
                 },
                 {
-                    thumb: 'med',
+                    thumb: 'min',
                     html: '<li class="rb rb_sq3" style="top: 1675px;"><div class="rb_padding"><a href="#"><img alt="_img7" src="##IMG##"></a></div></li>'
                 }
             ]
@@ -368,11 +388,28 @@ $(function() {
                 }
             ]
         }
-    ])
+    ], {
+        thumb: 'max',
+        html: '<div class="rb_padding preview" style="display:none"><img alt="_img13" src="##IMG##">'+
+                    '<h1>##TITLE##</h1>'+
+                    '<div class="marker"></div>'+
+                    '<ul class="menu_cont"><li class="red"><a href="#">страница</a></li><li><a href="#">бирка</a></li><li><a href="#">архив</a></li></ul>'+
+                    '<p>##TXT##</p>'+
+                    '<div class="block_info">'+
+                        '<div class="l"><img alt="_img" src="nsite/img/_img.jpg"></div>'+
+                        '<div class="r">'+
+                            '<em>отзыв<strong>00519</strong></em>'+
+                            '<em>просмотр<strong>01325</strong></em>'+
+                            '<em>показатель<strong class="color">+00000</strong></em>'+
+                        '</div>'+
+                        '<div class="clear"></div>'+
+                    '</div>'+
+                '</div>'
+    })
 
-    $('.r_block .rb_blocks li')
+    $('.r_block .rb_blocks .rb')
         .click(function() {
-            rBlocks.open($('.r_block .rb_blocks li').index(this))
+            rBlocks.open($('.r_block .rb_blocks .rb').index(this))
             return false;
         })
 })

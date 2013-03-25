@@ -54,19 +54,20 @@ var Builder = function() {
 
             this.elements = (function(that) {
                 var buf = [],
-                    elem,type;
+                    elem,size,type;
 
                 if (generate !== undefined) {
                     for (var i=0;i<that.count;i++) {
-                        type = generate[that.squares[i].type];
-                        elem = type.content[Math.floor(Math.random() * type.content.length)].html;
+                        size = generate[that.squares[i].type];
+                        type = size.content[Math.floor(Math.random() * size.content.length)];
+                        elem = type.html;
                         elem = elem
-                            .replace(/##IMG##/g, 'http://ipraaf.t.voenternet.ru/thumb/'+postList[i].id+'_max.png')
+                            .replace(/##IMG##/g, 'http://ipraaf.t.voenternet.ru/thumb/'+postList[i].id+'_'+type.thumb+'.png')
                             .replace(/##TITLE##/g, postList[i].title)
-                            .replace(/##TXT##/g, postList[i].text[0].substr(0,type.size*15)+'...')
+                            .replace(/##TXT##/g, postList[i].text[0].substr(0,size.size*15)+'...')
                         buf.push({
                             elem: $(elem),
-                            params: {x:null, y:null, r: type.size}
+                            params: {x:null, y:null, r: size.size}
                         })
                     }
                 } else {
@@ -328,7 +329,7 @@ $(function() {
             size: 2,
             content: [
                 {
-                    thumb: false,
+                    thumb: 'min',
                     html: '<li class="rb rb_sq2 rb_grey" style="top: 2225px;"><div class="rb_padding"><a href="#"><img alt="_img7" src="##IMG##"><em class="title_bottom">##TXT##</em></a></div></li>'
                 }
             ]
@@ -337,11 +338,11 @@ $(function() {
             size: 3,
             content: [
                 {
-                    thumb: false,
+                    thumb: 'med',
                     html: '<li class="rb rb_sq3 rb_bg" style="top: 1825px;"><div class="rb_padding"><a href="#"><img alt="_img7" src="##IMG##"><span class="rb_cont"><strong>##TITLE##</strong>##TXT##</span></a></div></li>'
                 },
                 {
-                    thumb: true,
+                    thumb: 'med',
                     html: '<li class="rb rb_sq3" style="top: 1675px;"><div class="rb_padding"><a href="#"><img alt="_img7" src="##IMG##"></a></div></li>'
                 }
             ]
@@ -350,19 +351,19 @@ $(function() {
             size: 5,
             content: [
                 {
-                    thumb: false,
+                    thumb: 'min',
                     html: '<li class="rb rb_sq5 rb_ips rb_grey" style="top: 1000px;"><div class="rb_padding"><img alt="_img5" src="##IMG##"><p><strong>##TITLE##</strong>##TXT##</p></div></li>'
                 },
                 {
-                    thumb: true,
+                    thumb: 'med',
                     html: '<li class="rb rb_sq5 rb_grey rb_ti" style="top: 500px;"><div class="rb_padding"><h1>##TITLE##</h1><a href="#"><img alt="_img7" src="##IMG##"></a></div></li>'
                 },
                 {
-                    thumb: true,
+                    thumb: 'med',
                     html: '<li class="rb rb_sq5 rb_grey rb_ti" style="top: 750px;"><div class="rb_padding"><a href="#"><img alt="_img7" src="##IMG##"></a><h1>##TITLE##</h1></div></li>'
                 },
                 {
-                    thumb: true,
+                    thumb: 'med',
                     html: '<li class="rb rb_sq5 rb_bg" style="top: 250px;"><div class="rb_padding"><a href="#"><img alt="_img7" src="##IMG##"><span class="marker"></span><span class="rb_cont">##TXT##</span></a></div></li>'
                 }
             ]

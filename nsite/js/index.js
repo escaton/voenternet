@@ -226,10 +226,7 @@ var Builder = function() {
         },
 
         open: function (index) {
-
-            console.log(index)
-            return;
-
+            
             if (this.width<8) {
                 window.location.href = postList[index].url
                 return;

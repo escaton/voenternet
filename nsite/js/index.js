@@ -227,6 +227,9 @@ var Builder = function() {
 
         open: function (index) {
 
+            console.log(index)
+            return;
+
             if (this.width<8) {
                 window.location.href = postList[index].url
                 return;
@@ -344,9 +347,10 @@ $(function() {
 
     cBlocks = new Builder(),
     rBlocks = new Builder();
+    wrapper = $('.r_block .rb_blocks');
 
     cBlocks.build($('.l_block .rb_blocks'))
-    rBlocks.build($('.r_block .rb_blocks'), [
+    rBlocks.build(wrapper, [
         {
             size: 2,
             content: [
@@ -409,9 +413,9 @@ $(function() {
                 '</div>'
     })
 
-    $('.r_block .rb_blocks ')
+    $('.r_block .rb_blocks .rb')
         .click(function() {
-            rBlocks.open($('.r_block .rb_blocks ').index(this))
+            rBlocks.open($('.r_block .rb_blocks .rb').index(this))
             return false;
         })
 })

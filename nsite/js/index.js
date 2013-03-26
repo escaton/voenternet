@@ -227,6 +227,10 @@ var Builder = function() {
 
         open: function (index) {
 
+            if (this.width<8) {
+                window.location.href = postList[index].url
+                return;
+            }
 
             var elements = this.elements,
                 elem = elements[index],
@@ -295,7 +299,7 @@ var Builder = function() {
 
         build: function (wrapper, generate, preview) {
 
-            if (wrapper === undefined) return;
+            if (wrapper.length === 0) return;
 
             this.init(wrapper, generate, preview);
 
@@ -337,11 +341,6 @@ var Builder = function() {
 
 
 $(function() {
-    
-    // $('.r_block').css({width:'740px'});
-    // $('.r_block .rb_blocks').css({width: 'auto'})
-    // $('.r_block .rb_blocks').css({'margin-right': '-5px'})
-
 
     cBlocks = new Builder(),
     rBlocks = new Builder();

@@ -295,7 +295,11 @@ var Builder = function() {
 
         build: function (wrapper, generate, preview) {
 
+            if (wrapper === undefined) return;
+
             this.init(wrapper, generate, preview);
+
+            if (this.width < 5) return;
 
             var x=0,y=0,max=0,
                 i=0,j=0,
@@ -333,11 +337,10 @@ var Builder = function() {
 
 
 $(function() {
-
-    $('.m_block').hide();
-    $('.r_block').css({width:'740px'});
-    $('.r_block .rb_blocks').css({width: 'auto'})
-    $('.r_block .rb_blocks').css({'margin-right': '-5px'})
+    
+    // $('.r_block').css({width:'740px'});
+    // $('.r_block .rb_blocks').css({width: 'auto'})
+    // $('.r_block .rb_blocks').css({'margin-right': '-5px'})
 
 
     cBlocks = new Builder(),
@@ -407,9 +410,9 @@ $(function() {
                 '</div>'
     })
 
-    $('.r_block .rb_blocks .rb')
+    $('.r_block .rb_blocks ')
         .click(function() {
-            rBlocks.open($('.r_block .rb_blocks .rb').index(this))
+            rBlocks.open($('.r_block .rb_blocks ').index(this))
             return false;
         })
 })

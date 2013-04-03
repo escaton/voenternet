@@ -636,10 +636,10 @@ $(function(){
         ]
 
         rBlocks.wrapper.find('.rb')
-        .click(function() {
-            $('.m_block').width(0);
-            return false;
-        })
+            .click(function() {
+                $('.m_block').width(0);
+                console.log('123')
+            })
 
         $('.m_block').bind('DOMSubtreeModified', function() {
             var newHeight = Math.ceil($(this).height()/50);

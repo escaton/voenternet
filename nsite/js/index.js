@@ -602,7 +602,10 @@ function rebuild_preview() {
 
 $(function(){
 
+    rBlocks = new Builder();
+
     if (window.curPostId !== undefined) {
+
         //на странице с открытой статьей
         $('.m_block').css({
             position: 'relative',
@@ -621,18 +624,24 @@ $(function(){
         $('.wrap').css({
             position: 'relative'
         })
+
+        rBlocks.limitations = [
+            {
+                x: 0,
+                y: 0,
+                h: null,
+                w: 10
+            }
+        ]
+
+        $('.m_block').bind('DOMSubtreeModified', function() {
+            var newHeight = Math.ceil($(this).height()/50);
+            rBlocks.limitations[0].h = newHeight;
+        })
+        .trigger('DOMSubtreeModified');
     }
 
 
-    rBlocks = new Builder();
-    rBlocks.limitations = [
-        {
-            x: 0,
-            y: 0,
-            h: 30,
-            w: 10
-        }
-    ]
 
     rebuild_preview();
 

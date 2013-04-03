@@ -591,12 +591,27 @@ function rebuild_preview() {
 }
 
 $(function(){
+
+    if (window.curPostId !== undefined) {
+        //на странице с открытой статьей
+        $('.m_block').css({
+            position: 'relative',
+            'z-index': 2
+        })
+        $('.r_block').css({
+            position: 'absolute',
+            'z-index': 1,
+            top: 0,
+            right: 0,
+            width: '740px'
+        })
+    }
+
     rebuild_preview();
+    rebuild_label();
+    
 });
 
-$(function(){
-    rebuild_label();
-});
 
 // $(function() {
 //     $('.button')

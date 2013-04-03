@@ -597,19 +597,22 @@ $(function(){
         $('.m_block').css({
             position: 'relative',
             'z-index': 2
-        })
+        });
         $('.r_block').css({
             position: 'absolute',
             'z-index': 1,
             top: 0,
             right: 0,
             width: '740px'
+        });
+        $('.wrap').css({
+            position: 'relative'
         })
     }
 
     rebuild_preview();
     rebuild_label();
-    
+
 });
 
 

@@ -605,6 +605,9 @@ $(function(){
             right: 0,
             width: '740px'
         });
+        $('.rb_blocks').css({
+            width: '100%'
+        });
         $('.wrap').css({
             position: 'relative'
         })

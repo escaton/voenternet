@@ -511,7 +511,6 @@ function rebuild_label() {
 
 
 function rebuild_preview() {
-    rBlocks.wrapper = $('.r_block .rb_blocks');
 
     for (var i in postList) {
         postList[i].IMG =  '/uploads/thumb/'+cur_blog.id+'_'+postList[i].id+'_##type_thumb##.png';
@@ -603,6 +602,7 @@ function rebuild_preview() {
 $(function(){
 
     rBlocks = new Builder();
+    rBlocks.wrapper = $('.r_block .rb_blocks');
 
     if (window.curPostId !== undefined) {
 

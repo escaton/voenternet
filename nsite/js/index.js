@@ -53,9 +53,8 @@ var Builder = function() {
 
             if (this.limitations !== undefined) {
                 for (var c=0;c<this.limitations.length;c++) {
-                    var limit = this.limitations[i];
-                    for (var i=limit.x;i<limit.x+limit.w;i++) {
-                        for (var j=limit.y;j<limit.y+limit.h;j++) {
+                    for (var i=this.limitations[i].x;i<this.limitations[i].x+this.limitations[i].w;i++) {
+                        for (var j=this.limitations[i].y;j<this.limitations[i].y+this.limitations[i].h;j++) {
                             this._map[i][j] = new Object();
                         }
                     }

@@ -592,11 +592,11 @@ function rebuild_preview() {
         ];
     rBlocks.build()
 
-    // rBlocks.wrapper.find('.rb')
-    //     .click(function() {
-    //         rBlocks.open($(rBlocks.wrapper[0].childNodes).index(this))
-    //         return false;
-    //     })
+    rBlocks.wrapper.find('.rb')
+        .click(function() {
+            rBlocks.open($(rBlocks.wrapper[0].childNodes).index(this))
+            return false;
+        })
 }
 
 $(function(){
@@ -635,21 +635,23 @@ $(function(){
             }
         ]
 
-        rBlocks.wrapper.find('.rb')
-            .click(function() {
-                $('.m_block').width(0);
-            })
-
         $('.m_block').bind('DOMSubtreeModified', function() {
             var newHeight = Math.ceil($(this).height()/50);
             rBlocks.limitations[0].h = newHeight;
         })
         .trigger('DOMSubtreeModified');
+
+        rebuild_preview();
+
+        rBlocks.wrapper.find('.rb')
+            .click(function() {
+                $('.m_block').width(0);
+            })
+        
+    } else {
+        rebuild_preview();
     }
 
-
-
-    rebuild_preview();
 
     rebuild_label();
 });

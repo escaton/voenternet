@@ -51,6 +51,17 @@ var Builder = function() {
 
             for (var i=0;i<this.width;i++) this._map[i] = new Array();
 
+            if (this.limitations !== undefined) {
+                for (var c=0;c<this.limitations.length;c++) {
+                    var limit = this.limitations[i];
+                    for (var i=limit.x;i<limit.x+limit.w) {
+                        for (var j=limit.y;j<limit.y+limit.h;j++) {
+                            this._map = new Object();
+                        }
+                    }
+                }
+            }
+
             this.squares = (function(count,fixSize) {
                 var buf = [],
                     i = 0;
@@ -500,7 +511,6 @@ function rebuild_label() {
 
 
 function rebuild_preview() {
-    rBlocks = new Builder();
     rBlocks.wrapper = $('.r_block .rb_blocks');
 
     for (var i in postList) {
@@ -514,7 +524,7 @@ function rebuild_preview() {
         preview_chaos()
         ? false
         : 2
-    );/*($(wrapper).width()<500?*/2/*)*/
+    );
 
     rBlocks.preview = [{
         thumb: 'max',
@@ -602,8 +612,8 @@ $(function(){
             position: 'absolute',
             'z-index': 1,
             top: 0,
-            right: 0,
-            width: '740px'
+            right: '-9px',
+            width: '750px'
         });
         $('.rb_blocks').css({
             width: '100%'
@@ -613,9 +623,20 @@ $(function(){
         })
     }
 
-    rebuild_preview();
-    rebuild_label();
 
+    rBlocks = new Builder();
+    rBlocks.limitations = [
+        {
+            x: 0,
+            y: 0,
+            h: 30,
+            w: 10
+        }
+    ]
+
+    rebuild_preview();
+
+    rebuild_label();
 });
 
 

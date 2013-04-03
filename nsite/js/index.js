@@ -592,11 +592,11 @@ function rebuild_preview() {
         ];
     rBlocks.build()
 
-    rBlocks.wrapper.find('.rb')
-        .click(function() {
-            rBlocks.open($(rBlocks.wrapper[0].childNodes).index(this))
-            return false;
-        })
+    // rBlocks.wrapper.find('.rb')
+    //     .click(function() {
+    //         rBlocks.open($(rBlocks.wrapper[0].childNodes).index(this))
+    //         return false;
+    //     })
 }
 
 $(function(){
@@ -638,7 +638,6 @@ $(function(){
         rBlocks.wrapper.find('.rb')
             .click(function() {
                 $('.m_block').width(0);
-                console.log('123')
             })
 
         $('.m_block').bind('DOMSubtreeModified', function() {

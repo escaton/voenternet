@@ -591,7 +591,7 @@ function rebuild_preview() {
             ]
         }
         ];
-    rBlocks.build( )
+    rBlocks.build()
 
     rBlocks.wrapper.find('.rb')
         .click(function() {
@@ -609,7 +609,8 @@ $(function(){
         //на странице с открытой статьей
         $('.m_block').css({
             position: 'relative',
-            'z-index': 2
+            'z-index': 2,
+            'transition': 'all 300ms ease'
         });
         $('.r_block').css({
             position: 'absolute',
@@ -633,6 +634,12 @@ $(function(){
                 w: 10
             }
         ]
+
+        rBlocks.wrapper.find('.rb')
+        .click(function() {
+            $('.m_block').width(0);
+            return false;
+        })
 
         $('.m_block').bind('DOMSubtreeModified', function() {
             var newHeight = Math.ceil($(this).height()/50);

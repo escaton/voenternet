@@ -1,5 +1,34 @@
-function preview_chaos() {
-   return $(".preview_chaos.active").hasClass('preview_chaos_1');
+
+$(function(){
+
+    if (!curPostId) {
+        $('#antiChaos').addClass('active');
+    }
+
+    $('#antiChaos').click(
+        function(){
+            if (!$('#antiChaos').hasClass('active')) {
+                $('#antiChaos').addClass('active');
+                rebuild_preview();
+            }
+        }
+    );
+
+});
+
+/**
+ * @todo: добавить ребилд!
+ */
+
+function calcLimitations() {
+    if (window.rBlocks ==  undefined) return
+    rBlocks.limitations[0].h = Math.ceil($('.m_block').height()/50)+3;
+}
+
+
+
+function preview_chaos () {
+    return !$('#antiChaos').hasClass('active');
 }
 
 
@@ -26,20 +55,19 @@ var Builder = function() {
         _map: new Array(),
         width: 0,
         height: 0,
-
-/*
-        types: (
-            preview_chaos()
-           ? [
-                {size: 's', r: 2},
-                {size: 'm', r: 3},
-                {size: 'l', r: 5}
-            ]
-           :[
-                {size: 'm', r: 3}
-            ]
-        ),
-*/
+        /*
+         types: (
+         preview_chaos()
+         ? [
+         {size: 's', r: 2},
+         {size: 'm', r: 3},
+         {size: 'l', r: 5}
+         ]
+         :[
+         {size: 'm', r: 3}
+         ]
+         ),
+         */
 
         squares: new Array(),
 
@@ -51,7 +79,7 @@ var Builder = function() {
 
             for (var i=0;i<this.width;i++) this._map[i] = new Array();
 
-            if (this.limitations !== undefined) {
+            if (this.limitations !== undefined && this.limitations) {
                 for (var c=0;c<this.limitations.length;c++) {
                     var limit = this.limitations[c];
                     for (var i=limit.x;i<limit.x+limit.w;i++) {
@@ -94,24 +122,24 @@ var Builder = function() {
                         type = size.content[Math.floor(Math.random() * size.content.length)];
                         elem = type.html;
                         prevHTML = that.preview[0].html;
-/*
-                        elem = elem
-                            .replace(/##IMG##/g, 'http://ipraaf.t.voenternet.ru/uploads/thumb/'+cur_blog.id+'_'+that.previewList[i].id+'_'+type.thumb+'.png')
-                            .replace(/##title##/g, that.previewList[i].title)
-                            .replace(/##text##/g, that.previewList[i].text[0])//.substr(0,size.size*15)+'...'
-                            .replace(/##url##/g, that.previewList[i].url)
+                        /*
+                         elem = elem
+                         .replace(/##IMG##/g, 'http://ipraaf.t.voenternet.ru/uploads/thumb/'+cur_blog.id+'_'+that.previewList[i].id+'_'+type.thumb+'.png')
+                         .replace(/##title##/g, that.previewList[i].title)
+                         .replace(/##text##/g, that.previewList[i].text[0])//.substr(0,size.size*15)+'...'
+                         .replace(/##url##/g, that.previewList[i].url)
 
-                        prevHTML = prevHTML
-                            .replace(/##IMG##/g, 'http://ipraaf.t.voenternet.ru/uploads/thumb/'+cur_blog.id+'_'+that.previewList[i].id+'_'+that.preview[0].thumb+'.png')
-                            .replace(/##title##/g, that.previewList[i].title)
-                            .replace(/##text##/g, that.previewList[i].text[0])
-                            .replace(/##url##/g, that.previewList[i].url)
-                            .replace(/##blog_abr##/g   , typeof that.previewList[i].blog_abr   == 'undefined'  ? cur_blog.abr   : that.previewList[i].blog_abr)
-                            .replace(/##LABEL_THEME##/g , typeof that.previewList[i].blog_theme == 'undefined'  ? cur_blog.theme : that.previewList[i].blog_abr)
-                            .replace(/##COUNTER_RATING##/g, that.previewList[i].counter.rating)
-                            .replace(/##COUNTER_COMMENT##/g, that.previewList[i].counter.comment)
-                            .replace(/##COUNTER_VIEW##/g, that.previewList[i].counter.view)
-*/
+                         prevHTML = prevHTML
+                         .replace(/##IMG##/g, 'http://ipraaf.t.voenternet.ru/uploads/thumb/'+cur_blog.id+'_'+that.previewList[i].id+'_'+that.preview[0].thumb+'.png')
+                         .replace(/##title##/g, that.previewList[i].title)
+                         .replace(/##text##/g, that.previewList[i].text[0])
+                         .replace(/##url##/g, that.previewList[i].url)
+                         .replace(/##blog_abr##/g   , typeof that.previewList[i].blog_abr   == 'undefined'  ? cur_blog.abr   : that.previewList[i].blog_abr)
+                         .replace(/##LABEL_THEME##/g , typeof that.previewList[i].blog_theme == 'undefined'  ? cur_blog.theme : that.previewList[i].blog_abr)
+                         .replace(/##COUNTER_RATING##/g, that.previewList[i].counter.rating)
+                         .replace(/##COUNTER_COMMENT##/g, that.previewList[i].counter.comment)
+                         .replace(/##COUNTER_VIEW##/g, that.previewList[i].counter.view)
+                         */
 
 
                         if (!that.previewList[i].thumb) {
@@ -323,6 +351,9 @@ var Builder = function() {
                 window.location.href = this.previewList[index].url
                 return;
             }
+            window.curPostId=null;
+            rBlocks.limitations = null;
+            $('.m_block').hide();
 
             var elements = this.elements,
                 elem = elements[index],
@@ -425,7 +456,9 @@ var Builder = function() {
 }
 
 function rebuild_label() {
-    lBlocks = new Builder();
+    if (typeof lBlocks =='undefined')
+        lBlocks = new Builder();
+
     lBlocks.zoomWidthSize = 5;
     lBlocks.wrapper = $($('.rb_blocks')[0]);
     lBlocks.previewList = prepareList(blogList,cur_blog.id);
@@ -511,7 +544,44 @@ function rebuild_label() {
 
 
 function rebuild_preview() {
+    if (typeof rBlocks =='undefined')
+        rBlocks = new Builder();
+    rBlocks.wrapper = $('.r_block .rb_blocks');
+    if (window.curPostId !== undefined && window.curPostId) {
+        //на странице с открытой статьей
+        $('.m_block').css({
+            position: 'relative',
+            'z-index': 2,
+            'transition': 'all 300ms ease'
+        });
+        $('.r_block').css({
+            position: 'absolute',
+            'z-index': 1,
+            top: 0,
+            right: '-9px',
+            width: '750px'
+        });
+        $('.rb_blocks').css({
+            width: '100%'
+        });
+        $('.wrap').css({
+            position: 'relative'
+        })
 
+        rBlocks.limitations = [
+            {
+                x: 0,
+                y: 0,
+                h: null,
+                w: 10
+            }
+        ]
+
+        $('.m_block').bind('DOMSubtreeModified', function() {
+            calcLimitations();
+        })
+            .trigger('DOMSubtreeModified');
+    }
     for (var i in postList) {
         postList[i].IMG =  '/uploads/thumb/'+cur_blog.id+'_'+postList[i].id+'_##type_thumb##.png';
         if (typeof postList[i].blog_abr   == 'undefined')
@@ -521,9 +591,9 @@ function rebuild_preview() {
     rBlocks.previewList = prepareList(postList,curPostId);
     rBlocks.fixSize = (
         preview_chaos()
-        ? false
-        : 2
-    );
+            ? false
+            : 2
+        );
 
     rBlocks.preview = [{
         thumb: 'max',
@@ -589,7 +659,7 @@ function rebuild_preview() {
                 }
             ]
         }
-        ];
+    ];
     rBlocks.build()
 
     rBlocks.wrapper.find('.rb')
@@ -600,59 +670,7 @@ function rebuild_preview() {
 }
 
 $(function(){
-
-    rBlocks = new Builder();
-    rBlocks.wrapper = $('.r_block .rb_blocks');
-
-    if (window.curPostId !== undefined) {
-
-        //на странице с открытой статьей
-        $('.m_block').css({
-            position: 'relative',
-            'z-index': 2,
-            'transition': 'all 300ms ease'
-        });
-        $('.r_block').css({
-            position: 'absolute',
-            'z-index': 1,
-            top: 0,
-            right: '-9px',
-            width: '750px'
-        });
-        $('.rb_blocks').css({
-            width: '100%'
-        });
-        $('.wrap').css({
-            position: 'relative'
-        })
-
-        rBlocks.limitations = [
-            {
-                x: 0,
-                y: 0,
-                h: null,
-                w: 10
-            }
-        ]
-
-        $('.m_block').bind('DOMSubtreeModified', function() {
-            var newHeight = Math.ceil($(this).height()/50);
-            rBlocks.limitations[0].h = newHeight;
-        })
-        .trigger('DOMSubtreeModified');
-
-        rebuild_preview();
-
-        rBlocks.wrapper.find('.rb')
-            .click(function() {
-                $('.m_block').width(0);
-            })
-        
-    } else {
-        rebuild_preview();
-    }
-
-
+    rebuild_preview();
     rebuild_label();
 });
 
